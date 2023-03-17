@@ -1,0 +1,9 @@
+/* app global css */
+@font-face {
+  font-family: Infinite;
+  src: url(./fonts/Infinite.woff);
+}
+
+.infinite {
+  font-family: "Infinite";
+}
