@@ -1,7 +1,7 @@
 <template>
   <q-card class="my-card">
     <q-btn flat to="/pelicula">
-      <img class="cartelera-img" :src="imagen" to="/test" />
+      <img class="cartelera-img" :src="imagen">
     </q-btn>
     <q-card-actions align="left">
       <q-btn flat round color="teal" icon="bookmark" />
@@ -23,6 +23,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style>
 .my-card {
   width: auto;

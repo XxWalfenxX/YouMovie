@@ -15,6 +15,7 @@
       />
     </q-carousel>
   </div>
+  
   <div class="q-pa-md row items-start q-gutter-md">
     <TarjetaPeli
       v-for="imagen in peliLista"
