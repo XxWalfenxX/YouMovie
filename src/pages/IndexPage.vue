@@ -14,14 +14,20 @@
         img-src="https://www.themoviedb.org/t/p/original/9IDJpHROaC0S1ZlIxrvzOcOX5yC.jpg"
       />
     </q-carousel>
-  </div>
-  
-  <div class="q-pa-md row items-start q-gutter-md">
-    <TarjetaPeli
-      v-for="imagen in peliLista"
-      :key="imagen.title"
-      v-bind="imagen"
-    />
+
+    <q-scroll-area
+      :thumb-style="thumbStyle"
+      :bar-style="barStyle"
+      style="height: 28rem; max-width: 100vw;"
+    >
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in peliLista"
+          :key="imagen.title"
+          v-bind="imagen"
+        />
+      </div>
+    </q-scroll-area>
   </div>
 </template>
 
@@ -37,6 +43,26 @@ const pelisList = [
   {
     imagen:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/vQM1Gmz6wYImeIhUHQ3ak5VUcny.jpg",
+  },
+  {
+    imagen:
+      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
+  },
+  {
+    imagen:
+      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
+  },
+  {
+    imagen:
+      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
+  },
+  {
+    imagen:
+      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
+  },
+  {
+    imagen:
+      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
   },
   {
     imagen:
@@ -75,3 +101,16 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+.scrolllateral {
+  overflow: auto;
+  flex-wrap: nowrap !important;
+}
+
+.q-pa-lg-m{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+</style>

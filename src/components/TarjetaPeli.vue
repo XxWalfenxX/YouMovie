@@ -44,6 +44,7 @@ export default defineComponent({
   width: auto;
   max-width: 300px;
   border-radius: var(--card-border);
+  margin-right: 1rem;
 }
 
 .btn-card {
