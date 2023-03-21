@@ -1,6 +1,6 @@
 <template>
   <q-card class="my-card">
-    <q-btn v-ripple class="btn-card cursor-pointer q-hoverable" flat @click="linkClick" to="/pelicula">
+    <q-btn v-ripple class="btn-card cursor-pointer q-hoverable" flat @click="linkClick" :to="{ name: 'DescipcionPelicula', params: { id: id }}">
       <span class="q-focus-helper"></span>
       <img class="cartelera-img" :src="imagen">
     </q-btn>
@@ -21,6 +21,10 @@ export default defineComponent({
     imagen: {
       type: String,
       default: "",
+    },
+    id: {
+      type: Number,
+      default: 0,
     },
   },
   setup() {
@@ -55,5 +59,6 @@ export default defineComponent({
 
 .cartelera-img {
   border-radius: var(--card-border);
+  pointer-events: none;
 }
 </style>

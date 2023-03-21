@@ -12,7 +12,7 @@
         </q-toolbar-title>
       </q-toolbar>
 
-      <q-tabs align="left">
+      <q-tabs align="center">
         <q-route-tab to="/" label="Inicio" />
         <q-route-tab to="/buscar" label="Buscar" />
         <q-route-tab to="/mi-lista" label="Mi Lista" />

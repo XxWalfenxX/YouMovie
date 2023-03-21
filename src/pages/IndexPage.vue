@@ -1,6 +1,17 @@
 <template>
   <div class="q-pa-lg">
-    <q-carousel animated v-model="slide" arrows navigation infinite>
+    <q-carousel class="border"
+      animated
+      v-model="slide"
+      navigation
+      infinite
+      :autoplay="autoplay"
+      arrows
+      transition-prev="slide-right"
+      transition-next="slide-left"
+      @mouseenter="autoplay = false"
+      @mouseleave="autoplay = true"
+    >
       <q-carousel-slide
         :name="1"
         img-src="https://www.themoviedb.org/t/p/original/nlgujXsHp2YPZg8gVpSEcyW6Xcu.jpg"
@@ -18,7 +29,7 @@
     <q-scroll-area
       :thumb-style="thumbStyle"
       :bar-style="barStyle"
-      style="height: 28rem; max-width: 100vw;"
+      style="height: 28rem; max-width: 100vw"
     >
       <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
         <TarjetaPeli
@@ -35,14 +46,19 @@
 import { defineComponent, ref } from "vue";
 import TarjetaPeli from "components/TarjetaPeli.vue";
 
+// redondear
+//console.log(Math.round(8.351*10))
+
 const pelisList = [
   {
     imagen:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/yJTmm7AOVEpfeK8BNrC5OFET3ns.jpg",
+    id: 5559
   },
   {
     imagen:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/vQM1Gmz6wYImeIhUHQ3ak5VUcny.jpg",
+      id: 2
   },
   {
     imagen:
@@ -97,20 +113,24 @@ export default defineComponent({
     return {
       peliLista: pelisList,
       slide: ref(1),
+      autoplay: ref(true)
     };
   },
 });
 </script>
 
 <style>
+.border {
+  border-radius: 10px;
+}
+
 .scrolllateral {
   overflow: auto;
   flex-wrap: nowrap !important;
 }
 
-.q-pa-lg-m{
+.q-pa-lg-m {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-
 </style>
