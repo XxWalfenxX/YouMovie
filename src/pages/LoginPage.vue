@@ -2,7 +2,7 @@
   <!-- Design template by Joabson Arley
    https://github.com/Joabsonlg/quasar-template-->
 
-  <q-card class="q-ma-xl">
+  <q-card class="q-ma-xl sombra">
     <div class="row">
       <div class="col-0 col-sm-5 bg-primary rounded-left-borders xs-hide">
         <div
@@ -106,3 +106,15 @@ const submit = async () => {
   }
 };
 </script>
+<style>
+.sombra {
+    box-shadow: 0 1px 14px 19px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  .sombra {
+    box-shadow: 0 1px 14px 19px rgba(255, 255, 255, 0.2), 0 2px 2px rgba(255, 255, 255, 0.14), 0 3px 1px -2px rgba(255, 255, 255, 0.12);
+}
+}
+
+</style>
