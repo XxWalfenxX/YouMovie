@@ -10,6 +10,7 @@
           </q-avatar>
           YouMovie
         </q-toolbar-title>
+        <q-btn flat @click="logout">Logout</q-btn>
       </q-toolbar>
 
       <q-tabs align="center">
@@ -60,6 +61,8 @@
 <script>
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
+import signout from "src/firebase/firebase-signout";
+import { useRouter } from "vue-router";
 
 const linksList = [
   {
@@ -77,12 +80,15 @@ const linksList = [
     icon: "attach_money",
     link: "https://quasar.dev",
   },
-  {
-    title: "Cerrar Sesión",
-    icon: "logout",
-    link: "https://quasar.dev",
-  },
 ];
+
+const router = useRouter();
+
+const logout = () => {
+  signout().then(() => {
+    router.push("/login");
+  });
+};
 
 export default defineComponent({
   name: "MainLayout",
@@ -93,9 +99,16 @@ export default defineComponent({
 
   setup() {
     const leftDrawerOpen = ref(false);
+    const router = useRouter();
 
+    const logout = () => {
+      signout().then(() => {
+        router.push("/login");
+      });
+    };
     return {
       essentialLinks: linksList,
+      logout: logout,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
