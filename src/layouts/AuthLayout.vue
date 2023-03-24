@@ -1,6 +1,6 @@
 <template>
     <q-layout view="lHh Lpr lFf">
-        <q-page-container class="pt-0-important bg-auth">
+        <q-page-container class="pt-0-important">
             <q-page>
                 <div class="row" style="height: 100vh">
                     <div class="col-12 flex content-center justify-center">
