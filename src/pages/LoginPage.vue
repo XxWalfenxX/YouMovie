@@ -29,7 +29,7 @@
                   <div
                     class="text-h4 text-uppercase q-my-none text-weight-bold text-primary fredoka"
                   >
-                    Login
+                    Iniciar sesión
                   </div>
                 </div>
               </div>
@@ -39,7 +39,7 @@
 
                 <q-input
                   v-model="user.password"
-                  label="Password"
+                  label="Contraseña"
                   name="password"
                   type="password"
                 />
@@ -55,9 +55,9 @@
 
                   <div class="q-mt-lg">
                     <div class="q-mt-sm">
-                      Don't have an account yet?
+                      ¿Aún no tienes una cuenta?
                       <router-link class="text-primary" to="/register"
-                        >Register</router-link
+                        >Crear cuenta</router-link
                       >
                     </div>
                   </div>
