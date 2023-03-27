@@ -5,10 +5,12 @@
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title class="infinite">
-          <q-avatar square>
-            <img style="color: white" src="~assets/YouMovieLogoWhite.svg" />
-          </q-avatar>
-          YouMovie
+          <router-link to="/" style="text-decoration: none; color: white;">
+            <q-avatar square>
+              <img style="color: white" src="~assets/YouMovieLogoWhite.svg" />
+            </q-avatar>
+            YouMovie
+          </router-link>
         </q-toolbar-title>
         <q-btn flat @click="confirm = true">Logout</q-btn>
       </q-toolbar>
@@ -55,7 +57,7 @@
       <q-dialog v-model="confirm" persistent>
         <q-card>
           <q-card-section class="row items-center">
-            <q-avatar icon="info" color="info" text-color="white" />
+            <q-icon name="info" color="primary" size="3em"/>
             <span class="q-ml-sm">¿Deseas cerrar tu sesión?</span>
           </q-card-section>
 
@@ -150,3 +152,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+
+.icono {
+  font-size: 2em;
+}
+
+</style>

@@ -2,7 +2,7 @@
   <!-- Template by Joabson Arley
    https://github.com/Joabsonlg/quasar-template -->
 
-  <q-card class="q-ma-xl">
+  <q-card class="q-ma-xl sombra">
     <div class="row">
       <div class="col-0 col-sm-5 bg-primary rounded-left-borders xs-hide">
         <div
@@ -13,11 +13,9 @@
               class="text-h4 text-uppercase text-white fredoka"
               style="min-width: 220px"
             >
-              Welcome!
+              <q-img src="src/assets/YouMovieLogoWhite.svg"></q-img>
             </div>
-            <div class="text-white q-my-sm text-subtitle1">
-              Enter your details to get started!
-            </div>
+            <div class="text-white q-my-sm text-h5 text-center">YouMovie</div>
           </div>
         </div>
       </div>
@@ -100,7 +98,7 @@ const user = reactive({
 });
 
 const form = ref(null);
-const router = useRouter()
+const router = useRouter();
 
 const submit = async () => {
   if (form.value.validate() && !!(await register(user))) {
@@ -108,3 +106,18 @@ const submit = async () => {
   }
 };
 </script>
+
+<style>
+.sombra {
+  box-shadow: 0 1px 14px 19px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  .sombra {
+    box-shadow: 0 1px 14px 19px rgba(255, 255, 255, 0.2),
+      0 2px 2px rgba(255, 255, 255, 0.14),
+      0 3px 1px -2px rgba(255, 255, 255, 0.12);
+  }
+}
+</style>
