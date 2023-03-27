@@ -7,3 +7,6 @@
 .infinite {
   font-family: "Infinite";
 }
+:root {
+  --q-primary:  #ff913e;
+}

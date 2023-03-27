@@ -23,6 +23,7 @@ const routes = [
         name: "DescipcionPelicula",
         component: () => import("pages/DescipcionPelicula.vue"),
       },
+      { path: "/mi-cuenta", component: () => import("pages/MiCuenta.vue") },
     ],
     meta: { auth: true },
   },

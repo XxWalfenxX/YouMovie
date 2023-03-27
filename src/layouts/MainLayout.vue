@@ -10,7 +10,7 @@
           </q-avatar>
           YouMovie
         </q-toolbar-title>
-        <q-btn flat @click="logout">Logout</q-btn>
+        <q-btn flat @click="confirm = true">Logout</q-btn>
       </q-toolbar>
 
       <q-tabs align="center">
@@ -21,8 +21,7 @@
     </q-header>
     <q-drawer v-model="leftDrawerOpen" side="left" overlay>
       <q-scroll-area
-        style="
-          height: calc(100% - 150px);
+        style=" height: calc(100% - 150px);
           margin-top: 150px;
           border-right: 1px solid #ddd;
         "
@@ -44,15 +43,34 @@
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/FAC32106A784964476DEBAA3A4E0978A8C6C88F76195AC4F83DBFCD232991ECD/"
+              :src="avatar"
             />
           </q-avatar>
-          <div class="text-weight-bold">Walfen</div>
+          <div class="text-weight-bold">{{ name}}</div>
         </div>
       </q-img>
     </q-drawer>
 
     <q-page-container>
+      <q-dialog v-model="confirm" persistent>
+        <q-card>
+          <q-card-section class="row items-center">
+            <q-avatar icon="info" color="info" text-color="white" />
+            <span class="q-ml-sm">¿Deseas cerrar tu sesión?</span>
+          </q-card-section>
+
+          <q-card-actions align="right">
+            <q-btn flat label="Cancelar" v-close-popup />
+            <q-btn
+              flat
+              label="Cerrar sesión"
+              color="primary"
+              v-close-popup
+              @click="logout"
+            />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
       <router-view />
     </q-page-container>
   </q-layout>
@@ -63,12 +81,13 @@ import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 import signout from "src/firebase/firebase-signout";
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 const linksList = [
   {
     title: "Mi cuenta",
     icon: "person",
-    link: "https://quasar.dev",
+    link: "/mi-cuenta",
   },
   {
     title: "Ayuda",
@@ -98,17 +117,31 @@ export default defineComponent({
   },
 
   setup() {
+    const $q = useQuasar();
     const leftDrawerOpen = ref(false);
     const router = useRouter();
+    const user = $q.localStorage.getItem("user");
+    console.log(user);
 
     const logout = () => {
       signout().then(() => {
         router.push("/login");
       });
     };
+
+    let linkIMG
+    if (user.photoURL == null) {
+      linkIMG = "src/assets/default.jpg"
+    }else{
+      linkIMG = user.photoURL
+    }
+
     return {
+      avatar: linkIMG,
+      name: user.displayName,
       essentialLinks: linksList,
       logout: logout,
+      confirm: ref(false),
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
