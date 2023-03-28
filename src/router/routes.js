@@ -24,6 +24,7 @@ const routes = [
         component: () => import("pages/DescipcionPelicula.vue"),
       },
       { path: "/mi-cuenta", component: () => import("pages/MiCuenta.vue") },
+      { path: "/admin", component: () => import("pages/AdminPanel.vue") },
     ],
     meta: { auth: true },
   },

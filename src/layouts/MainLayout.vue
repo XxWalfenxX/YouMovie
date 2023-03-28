@@ -123,7 +123,6 @@ export default defineComponent({
     const leftDrawerOpen = ref(false);
     const router = useRouter();
     const user = $q.localStorage.getItem("user");
-    console.log(user);
 
     const logout = () => {
       signout().then(() => {
