@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <div class="">
+      <q-btn class="btn" round color="primary" icon="close" href="javascript:history.back()"/>
       <div class="video">
         <iframe
           width="100%"
@@ -10,8 +10,6 @@
           allowfullscreen
         />
       </div>
-    </div>
-
   </q-page>
 </template>
 
@@ -27,4 +25,12 @@ export default {
 .video {
   height: calc(100vh - (115px + 16px + 16px));
 }
+
+.btn {
+  position: absolute;
+  float: right;
+  right: 3em;
+  top: 3em;
+}
+
 </style>
