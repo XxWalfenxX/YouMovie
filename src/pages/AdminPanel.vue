@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-form @submit="cambiarNombre" class="centrado">
+    <q-form @submit="agregarPeli" class="centrado">
       <div class="row flex-center " style="height: 100%;">
         <div class="col-4 q-gutter-md">
         <h4>Agregar pelicula</h4>
@@ -31,6 +31,8 @@ import AdminAuth from "src/firebase/AdminAuth";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
+import CollectionMovie from "src/tmdb/tmdb"
+
 export default defineComponent({
   name: "AdminPanel",
 
@@ -47,6 +49,11 @@ export default defineComponent({
     return {
       tmdb: ref(null),
       synology: ref(null),
+
+      agregarPeli(evt){
+        console.log(evt);
+        CollectionMovie(evt.target[0].value);
+      }
     };
   },
 });

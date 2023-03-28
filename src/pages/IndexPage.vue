@@ -27,8 +27,6 @@
     </q-carousel>
 
     <q-scroll-area
-      :thumb-style="thumbStyle"
-      :bar-style="barStyle"
       style="height: 28rem; max-width: 100vw"
     >
       <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
