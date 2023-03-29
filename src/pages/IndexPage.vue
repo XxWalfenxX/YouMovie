@@ -1,6 +1,7 @@
 <template>
   <div class="q-pa-lg">
-    <q-carousel class="border"
+    <q-carousel
+      class="border"
       animated
       v-model="slide"
       navigation
@@ -26,79 +27,25 @@
       />
     </q-carousel>
 
-    <q-scroll-area
-      style="height: 28rem; max-width: 100vw"
-    >
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in peliLista"
-          :key="imagen.title"
-          v-bind="imagen"
-        />
-      </div>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+          <TarjetaPeli
+            v-for="imagen in state.listaPelis"
+            :key="imagen.id"
+            v-bind="imagen"
+          />
+        </div>
     </q-scroll-area>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, reactive } from "vue";
 import TarjetaPeli from "components/TarjetaPeli.vue";
+import getPeliculas from "src/firebase/ObtenerPeliculas";
 
 // redondear
 //console.log(Math.round(8.351*10))
-
-const pelisList = [
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/yJTmm7AOVEpfeK8BNrC5OFET3ns.jpg",
-    id: 5559
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/vQM1Gmz6wYImeIhUHQ3ak5VUcny.jpg",
-      id: 2
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    imagen:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-];
 
 export default defineComponent({
   name: "IndexPage",
@@ -108,10 +55,18 @@ export default defineComponent({
   },
 
   setup() {
+    const state = reactive({
+      listaPelis: [],
+    });
+
+    getPeliculas.then((pelis) => {
+      state.listaPelis = pelis;
+    });
+
     return {
-      peliLista: pelisList,
+      state,
       slide: ref(1),
-      autoplay: ref(true)
+      autoplay: ref(true),
     };
   },
 });

@@ -2,7 +2,7 @@
   <q-card class="my-card">
     <q-btn v-ripple class="btn-card cursor-pointer q-hoverable" flat @click="linkClick" :to="{ name: 'DescipcionPelicula', params: { id: id }}">
       <span class="q-focus-helper"></span>
-      <img class="cartelera-img" :src="imagen">
+      <img class="cartelera-img" :src="poster">
     </q-btn>
 
     <q-card-actions align="left">
@@ -18,13 +18,13 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "TarjetaPeli",
   props: {
-    imagen: {
+    poster: {
       type: String,
       default: "",
     },
     id: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "",
     },
   },
   setup() {

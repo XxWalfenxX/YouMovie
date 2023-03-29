@@ -1,8 +1,5 @@
 <template>
-  <q-img
-    class="img-fondo"
-    src="https://www.themoviedb.org/t/p/original/psAQQBTJvSs4kaShupcn9IoHXc0.jpg"
-  >
+  <q-img class="img-fondo" :src="state.peliData.imagenFondo">
     <div class="absolute-full pading">
       <div class="column">
         <div class="col">
@@ -11,12 +8,12 @@
               <div class="flex">
                 <q-img
                   class="img-titulo"
-                  src="https://www.themoviedb.org/t/p/original/64vMHyQAOYuqAQeZCac33wTAySx.png"
+                  :src="state.peliData.logo"
                 ></q-img>
                 <q-btn
                   class="full-width img-titulo"
                   size="xl"
-                  to="/ver-online"
+                  :to="{ name: 'PeliculaView', params: { id: state.peliData.id }}"
                   icon="play_circle"
                   label="Ver ahora"
                   color="purple"
@@ -26,16 +23,9 @@
             </div>
             <div class="col-md-4 col-8">
               <div class="Contenedor-Texto">
-                Barry goes on an adventure to save the world from the clutches
-                of his own actions. He must live through the realisation of the
-                horrific results of his close minded an misguided, the he may
-                very well (if not for his actions in the game) kill all the
-                plants and by extension the animals including all his bee
-                friends (Betty, Bob, Bailey, Buscemi ect)
+                {{ state.peliData.descripcion }}
               </div>
-              <q-chip color="primary" text-color="white">Aventura</q-chip>
-              <q-chip color="primary" text-color="white">Aventura</q-chip>
-              <q-chip color="primary" text-color="white">Aventura</q-chip>
+              <q-chip color="primary" text-color="white" v-for="genero in state.peliData.categorias" :key="genero.id">{{genero.name}}</q-chip>
             </div>
           </div>
         </div>
@@ -44,16 +34,16 @@
             <q-circular-progress
               show-value
               font-size="12px"
-              value="60"
+              :value="state.valoracion"
               size="50px"
               thickness="0.22"
               color="teal"
               track-color="grey-3"
               class="q-ma-md"
             >
-              60%
+              {{ state.valoracion }}%
             </q-circular-progress>
-            Puntiacion de usuario
+            Puntuación de usuario
           </div>
         </div>
       </div>
@@ -76,35 +66,36 @@
 </template>
 
 <script>
-import { ref, onMounted, getCurrentInstance } from "vue";
+import { ref, onMounted, getCurrentInstance, reactive } from "vue";
 import { useRoute } from "vue-router";
 import TarjetaPeli from "components/TarjetaPeli.vue";
+import getUnaPelicula from "src/firebase/ObtenerUnaPelicula";
 
 const pelisList = [
   {
-    imagen:
+    poster:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/yJTmm7AOVEpfeK8BNrC5OFET3ns.jpg",
     id: 5559,
   },
   {
-    imagen:
+    poster:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/vQM1Gmz6wYImeIhUHQ3ak5VUcny.jpg",
     id: 2,
   },
   {
-    imagen:
+    poster:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
   },
   {
-    imagen:
+    poster:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
   },
   {
-    imagen:
+    poster:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
   },
   {
-    imagen:
+    poster:
       "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
   },
 ];
@@ -115,11 +106,23 @@ export default {
     TarjetaPeli,
   },
   setup() {
-    const api = ref(null);
-    const Test = useRoute().params.id;
+    const idPeli = useRoute().params.id;
+    const state = reactive({
+      peliData: [],
+      valoracion: 0,
+    });
 
-    console.log(Test);
+    getUnaPelicula(idPeli)
+      .then(function (data) {
+        state.peliData = data;
+        state.valoracion = Math.round(data.valoracion * 10);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
     return {
+      state,
       peliLista: pelisList,
     };
   },

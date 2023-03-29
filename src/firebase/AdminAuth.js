@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./index.js";
 

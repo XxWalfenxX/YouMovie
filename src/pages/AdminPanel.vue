@@ -52,7 +52,7 @@ export default defineComponent({
 
       agregarPeli(evt){
         console.log(evt);
-        CollectionMovie(evt.target[0].value);
+        CollectionMovie(evt.target[0].value, evt.target[2].value);
       }
     };
   },

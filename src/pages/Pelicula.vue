@@ -5,7 +5,7 @@
         <iframe
           width="100%"
           height="100%"
-          src="https://wolfiex.synology.me:5001/vs/sharing/JssVAHSQ#!bW92aWUtMTkx"
+          :src="state.peliData.linkVideostation"
           frameborder="0"
           allowfullscreen
         />
@@ -14,9 +14,30 @@
 </template>
 
 <script>
+import { reactive } from "vue";
+import { useRoute } from "vue-router";
+import getUnaPelicula from "src/firebase/ObtenerUnaPelicula";
 
 export default {
   name: "PeliculaView",
+  setup() {
+    const idPeli = useRoute().params.id;
+    const state = reactive({
+      peliData: [],
+    });
+
+    getUnaPelicula(idPeli)
+      .then(function (data) {
+        state.peliData = data;
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+    return {
+      state
+    };
+  },
 };
 </script>
 

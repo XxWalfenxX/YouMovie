@@ -17,7 +17,11 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
-      { path: "/ver-online", component: () => import("pages/Pelicula.vue") },
+      {
+        path: "/ver-online/:id",
+        name: "PeliculaView",
+        component: () => import("pages/Pelicula.vue"),
+      },
       {
         path: "/pelicula/:id",
         name: "DescipcionPelicula",
