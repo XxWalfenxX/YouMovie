@@ -70,6 +70,8 @@ import { ref, onMounted, getCurrentInstance, reactive } from "vue";
 import { useRoute } from "vue-router";
 import TarjetaPeli from "components/TarjetaPeli.vue";
 import getUnaPelicula from "src/firebase/ObtenerUnaPelicula";
+import { useQuasar } from "quasar";
+import { LocalStorage } from "quasar";
 
 const pelisList = [
   {
@@ -106,20 +108,32 @@ export default {
     TarjetaPeli,
   },
   setup() {
+    const $q = useQuasar();
     const idPeli = useRoute().params.id;
     const state = reactive({
       peliData: [],
       valoracion: 0,
     });
+    const peliActual = $q.localStorage.getItem("peliActual");
 
-    getUnaPelicula(idPeli)
+    if (peliActual.id != idPeli || peliActual == null) {
+      getUnaPelicula(idPeli)
       .then(function (data) {
+        console.log("Ha pedido info a db");
         state.peliData = data;
         state.valoracion = Math.round(data.valoracion * 10);
+        LocalStorage.set("peliActual", data);
       })
       .catch(function (error) {
         console.error(error);
       });
+    }else{
+      console.log("NO pedido info a db");
+      state.peliData = peliActual
+      state.valoracion = Math.round(peliActual.valoracion * 10);
+    }
+
+
 
     return {
       state,

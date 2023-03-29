@@ -14,21 +14,26 @@
 
 <script>
 import { defineComponent } from "vue";
+import { LocalStorage } from "quasar";
 
 export default defineComponent({
   name: "TarjetaPeli",
-  props: {
-    poster: {
-      type: String,
-      default: "",
-    },
-    id: {
-      type: String,
-      default: "",
-    },
-  },
-  setup() {
+  props: ['id','nombre','descripcion','categorias','valoracion','poster','imagenFondo','logo','linkVideostation'],
+
+  setup(props) {
     function linkClick(e, go) {
+      const propsGuardados = {
+        id: props.id,
+        nombre: props.nombre,
+        descripcion: props.descripcion,
+        categorias: props.categorias,
+        valoracion: props.valoracion,
+        poster: props.poster,
+        imagenFondo: props.imagenFondo,
+        logo: props.logo,
+        linkVideostation: props.linkVideostation
+      }
+      LocalStorage.set("peliActual", propsGuardados);
       e.preventDefault();
       setTimeout(() => {
         go();
