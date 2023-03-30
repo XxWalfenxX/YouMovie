@@ -6,7 +6,7 @@
     </q-btn>
 
     <q-card-actions align="left">
-      <q-btn flat round color="teal" icon="bookmark" />
+      <q-btn flat round color="teal" icon="bookmark" @click="GuardarLista"/>
       <q-btn flat round color="primary" icon="share" />
     </q-card-actions>
   </q-card>
@@ -15,12 +15,21 @@
 <script>
 import { defineComponent } from "vue";
 import { LocalStorage } from "quasar";
+import GuardarTargetaUsuario from "src/firebase/GuardarTargetaUsuario";
+import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "TarjetaPeli",
   props: ['id','nombre','descripcion','categorias','valoracion','poster','imagenFondo','logo','linkVideostation'],
 
   setup(props) {
+    const $q = useQuasar();
+    const user = $q.localStorage.getItem("user");
+
+    function GuardarLista() {
+      GuardarTargetaUsuario(props.id, user.email);
+    }
+
     function linkClick(e, go) {
       const propsGuardados = {
         id: props.id,
@@ -39,7 +48,7 @@ export default defineComponent({
         go();
       }, 500);
     }
-    return { linkClick };
+    return { linkClick, GuardarLista };
   },
 });
 </script>

@@ -29,6 +29,7 @@ const routes = [
       },
       { path: "/mi-cuenta", component: () => import("pages/MiCuenta.vue") },
       { path: "/admin", component: () => import("pages/AdminPanel.vue") },
+      { path: "/mi-lista", component: () => import("pages/MiLista.vue") },
     ],
     meta: { auth: true },
   },
