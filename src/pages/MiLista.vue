@@ -1,9 +1,7 @@
 <template>
   <div class="q-pa-lg q-pa-lg-m row items-start">
-    {{ state.listaPelis }}
-
-    <TarjetaPeli
-      v-for="imagen in state.listaPelis"
+     <TarjetaPeli
+      v-for="imagen in state.listaPelis2.filter(peli => state.listaPelis.includes(peli.id))"
       :key="imagen.id"
       v-bind="imagen"
     />
@@ -41,7 +39,7 @@ export default defineComponent({
       state.listaPelis2 = pelis;
     });
 
-    
+
 
     return {
       state,
