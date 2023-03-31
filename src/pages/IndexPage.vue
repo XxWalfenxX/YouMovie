@@ -27,10 +27,44 @@
       />
     </q-carousel>
 
+    <h4>Novedades</h4>
     <q-scroll-area style="height: 28rem; max-width: 100vw">
         <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
           <TarjetaPeli
             v-for="imagen in state.listaPelis"
+            :key="imagen.id"
+            v-bind="imagen"
+          />
+        </div>
+    </q-scroll-area>
+
+    <h4>Aventura</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+          <TarjetaPeli
+            v-for="imagen in state.listaPelis.filter(peli => peli.categorias[0].name.includes('Aventura'))"
+            :key="imagen.id"
+            v-bind="imagen"
+          />
+        </div>
+    </q-scroll-area>
+
+    <h4>Comedia</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+          <TarjetaPeli
+            v-for="imagen in state.listaPelis.filter(peli => peli.categorias[0].name.includes('Comedia'))"
+            :key="imagen.id"
+            v-bind="imagen"
+          />
+        </div>
+    </q-scroll-area>
+
+    <h4>Fantasía</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+          <TarjetaPeli
+            v-for="imagen in state.listaPelis.filter(peli => peli.categorias[0].name.includes('Fantasía'))"
             :key="imagen.id"
             v-bind="imagen"
           />
@@ -61,6 +95,7 @@ export default defineComponent({
 
     getPeliculas.then((pelis) => {
       state.listaPelis = pelis;
+      console.log(state.listaPelis.filter(peli => peli.categorias.fetch(ca => ca.name.includes("Comedia"))))
     });
 
     return {
@@ -85,5 +120,9 @@ export default defineComponent({
 .q-pa-lg-m {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+h4 {
+  margin-bottom: 0;
 }
 </style>
