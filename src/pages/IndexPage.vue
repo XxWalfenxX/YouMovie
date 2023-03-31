@@ -14,61 +14,131 @@
       @mouseleave="autoplay = true"
     >
       <q-carousel-slide
-        :name="1"
-        img-src="https://www.themoviedb.org/t/p/original/nlgujXsHp2YPZg8gVpSEcyW6Xcu.jpg"
-      />
-      <q-carousel-slide
-        :name="2"
-        img-src="https://www.themoviedb.org/t/p/original/uMSxXLfH7v30gRNBqsQaSP3yqX5.jpg"
-      />
-      <q-carousel-slide
-        :name="3"
-        img-src="https://www.themoviedb.org/t/p/original/9IDJpHROaC0S1ZlIxrvzOcOX5yC.jpg"
+        v-for="(peli, index) in state.listaPelis.slice(0, 5)"
+        :key="index"
+        :name="index + 1"
+        :img-src="peli.imagenFondo"
       />
     </q-carousel>
 
     <h4>Novedades</h4>
     <q-scroll-area style="height: 28rem; max-width: 100vw">
-        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-          <TarjetaPeli
-            v-for="imagen in state.listaPelis"
-            :key="imagen.id"
-            v-bind="imagen"
-          />
-        </div>
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
     </q-scroll-area>
 
     <h4>Aventura</h4>
     <q-scroll-area style="height: 28rem; max-width: 100vw">
-        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-          <TarjetaPeli
-            v-for="imagen in state.listaPelis.filter(peli => peli.categorias.find(ca => ca.name === 'Aventura'))"
-            :key="imagen.id"
-            v-bind="imagen"
-          />
-        </div>
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Aventura')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
     </q-scroll-area>
-
+    <h4>Acción</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Acción')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
+    </q-scroll-area>
+    <h4>Crimen</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Crimen')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
+    </q-scroll-area>
     <h4>Comedia</h4>
     <q-scroll-area style="height: 28rem; max-width: 100vw">
-        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-          <TarjetaPeli
-            v-for="imagen in state.listaPelis.filter(peli => peli.categorias.find(ca => ca.name === 'Comedia'))"
-            :key="imagen.id"
-            v-bind="imagen"
-          />
-        </div>
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Comedia')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
     </q-scroll-area>
-
     <h4>Fantasía</h4>
     <q-scroll-area style="height: 28rem; max-width: 100vw">
-        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-          <TarjetaPeli
-            v-for="imagen in state.listaPelis.filter(peli => peli.categorias.find(ca => ca.name === 'Fantasía'))"
-            :key="imagen.id"
-            v-bind="imagen"
-          />
-        </div>
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Fantasía')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
+    </q-scroll-area>
+    <h4>Animación</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Animación')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
+    </q-scroll-area>
+    <h4>Familia</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Familia')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
+    </q-scroll-area>
+    <h4>Drama</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Drama')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
+    </q-scroll-area>
+    <h4>Historia</h4>
+    <q-scroll-area style="height: 28rem; max-width: 100vw">
+      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+        <TarjetaPeli
+          v-for="imagen in state.listaPelis.filter((peli) =>
+            peli.categorias.find((ca) => ca.name === 'Historia')
+          )"
+          :key="imagen.id"
+          v-bind="imagen"
+        />
+      </div>
     </q-scroll-area>
   </div>
 </template>
@@ -95,7 +165,6 @@ export default defineComponent({
 
     getPeliculas.then((pelis) => {
       state.listaPelis = pelis;
-      console.log(state.listaPelis.filter(peli => peli.categorias.find(ca => ca.name === "Comedia")))
     });
 
     return {

@@ -12,7 +12,7 @@
             YouMovie
           </router-link>
         </q-toolbar-title>
-        <q-btn flat @click="confirm = true">Logout</q-btn>
+        <q-btn flat @click="confirm = true">Cerrar sesión</q-btn>
       </q-toolbar>
 
       <q-tabs align="center">
