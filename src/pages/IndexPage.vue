@@ -128,12 +128,12 @@
         />
       </div>
     </q-scroll-area>
-    <h4>Historia</h4>
+    <h4>Ciencia ficción</h4>
     <q-scroll-area style="height: 28rem; max-width: 100vw">
       <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
         <TarjetaPeli
           v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Historia')
+            peli.categorias.find((ca) => ca.name === 'Ciencia ficción')
           )"
           :key="imagen.id"
           v-bind="imagen"
