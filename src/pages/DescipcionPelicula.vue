@@ -6,14 +6,14 @@
           <div class="row items-center justify-center-mv">
             <div class="col-md-3 col-8">
               <div class="flex">
-                <q-img
-                  class="img-titulo"
-                  :src="state.peliData.logo"
-                ></q-img>
+                <q-img class="img-titulo" :src="state.peliData.logo"></q-img>
                 <q-btn
                   class="full-width img-titulo"
                   size="xl"
-                  :to="{ name: 'PeliculaView', params: { id: state.peliData.id }}"
+                  :to="{
+                    name: 'PeliculaView',
+                    params: { id: state.peliData.id },
+                  }"
                   icon="play_circle"
                   label="Ver ahora"
                   color="purple"
@@ -25,7 +25,13 @@
               <div class="Contenedor-Texto">
                 {{ state.peliData.descripcion }}
               </div>
-              <q-chip color="primary" text-color="white" v-for="genero in state.peliData.categorias" :key="genero.id">{{genero.name}}</q-chip>
+              <q-chip
+                color="primary"
+                text-color="white"
+                v-for="genero in state.peliData.categorias"
+                :key="genero.id"
+                >{{ genero.name }}</q-chip
+              >
             </div>
           </div>
         </div>
@@ -48,16 +54,17 @@
         </div>
       </div>
       <h4>Similares</h4>
-      <q-scroll-area
-        :thumb-style="thumbStyle"
-        :bar-style="barStyle"
-        style="height: 28rem; max-width: 100vw"
-      >
+      <q-scroll-area style="height: 28rem; max-width: 100vw">
         <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
           <TarjetaPeli
-            v-for="imagen in peliLista"
-            :key="imagen.title"
+            v-for="imagen in state.listaPelis.filter((peli) =>
+              peli.categorias.find(
+                (ca) => ca.id === state.peliData.categorias[0].id
+              )
+            )"
+            :key="imagen.id"
             v-bind="imagen"
+            @click="updatePeli(imagen.id)"
           />
         </div>
       </q-scroll-area>
@@ -66,78 +73,61 @@
 </template>
 
 <script>
-import { ref, onMounted, getCurrentInstance, reactive } from "vue";
-import { useRoute } from "vue-router";
+import { reactive } from "vue";
+import { useRoute,useRouter } from "vue-router";
 import TarjetaPeli from "components/TarjetaPeli.vue";
 import getUnaPelicula from "src/firebase/ObtenerUnaPelicula";
 import { useQuasar } from "quasar";
 import { LocalStorage } from "quasar";
 
-const pelisList = [
-  {
-    poster:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/yJTmm7AOVEpfeK8BNrC5OFET3ns.jpg",
-    id: 5559,
-  },
-  {
-    poster:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/vQM1Gmz6wYImeIhUHQ3ak5VUcny.jpg",
-    id: 2,
-  },
-  {
-    poster:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    poster:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    poster:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-  {
-    poster:
-      "https://www.themoviedb.org/t/p/w220_and_h330_face/wFdwJh3fbhp5aiRbQelVz1mbbwP.jpg",
-  },
-];
+import getPeliculas from "src/firebase/ObtenerPeliculas";
 
 export default {
   name: "DescipcionPelicula",
   components: {
     TarjetaPeli,
   },
+
   setup() {
     const $q = useQuasar();
+    const router = useRouter();
     const idPeli = useRoute().params.id;
     const state = reactive({
       peliData: [],
       valoracion: 0,
+      listaPelis: [],
     });
+
     const peliActual = $q.localStorage.getItem("peliActual");
+
+    getPeliculas.then((pelis) => {
+      state.listaPelis = pelis;
+    });
 
     if (peliActual.id != idPeli || peliActual == null) {
       getUnaPelicula(idPeli)
-      .then(function (data) {
-        console.log("Ha pedido info a db");
-        state.peliData = data;
-        state.valoracion = Math.round(data.valoracion * 10);
-        LocalStorage.set("peliActual", data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-    }else{
+        .then(function (data) {
+          console.log("Ha pedido info a db");
+          state.peliData = data;
+          state.valoracion = Math.round(data.valoracion * 10);
+          LocalStorage.set("peliActual", data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
       console.log("NO pedido info a db");
-      state.peliData = peliActual
+      state.peliData = peliActual;
       state.valoracion = Math.round(peliActual.valoracion * 10);
     }
 
-
+    const updatePeli = (id) => {
+      router.push({ name: "PeliculaView", params: { id } });
+    };
 
     return {
       state,
-      peliLista: pelisList,
+      updatePeli
     };
   },
 };
