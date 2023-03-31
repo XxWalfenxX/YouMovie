@@ -42,7 +42,7 @@
     <q-scroll-area style="height: 28rem; max-width: 100vw">
         <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
           <TarjetaPeli
-            v-for="imagen in state.listaPelis.filter(peli => peli.categorias[0].name.includes('Aventura'))"
+            v-for="imagen in state.listaPelis.filter(peli => peli.categorias.find(ca => ca.name === 'Aventura'))"
             :key="imagen.id"
             v-bind="imagen"
           />
@@ -53,7 +53,7 @@
     <q-scroll-area style="height: 28rem; max-width: 100vw">
         <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
           <TarjetaPeli
-            v-for="imagen in state.listaPelis.filter(peli => peli.categorias[0].name.includes('Comedia'))"
+            v-for="imagen in state.listaPelis.filter(peli => peli.categorias.find(ca => ca.name === 'Comedia'))"
             :key="imagen.id"
             v-bind="imagen"
           />
@@ -64,7 +64,7 @@
     <q-scroll-area style="height: 28rem; max-width: 100vw">
         <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
           <TarjetaPeli
-            v-for="imagen in state.listaPelis.filter(peli => peli.categorias[0].name.includes('Fantasía'))"
+            v-for="imagen in state.listaPelis.filter(peli => peli.categorias.find(ca => ca.name === 'Fantasía'))"
             :key="imagen.id"
             v-bind="imagen"
           />
@@ -95,7 +95,7 @@ export default defineComponent({
 
     getPeliculas.then((pelis) => {
       state.listaPelis = pelis;
-      console.log(state.listaPelis.filter(peli => peli.categorias.fetch(ca => ca.name.includes("Comedia"))))
+      console.log(state.listaPelis.filter(peli => peli.categorias.find(ca => ca.name === "Comedia")))
     });
 
     return {
