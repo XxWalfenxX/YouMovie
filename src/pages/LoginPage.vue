@@ -13,7 +13,7 @@
               class="text-h4 text-uppercase text-white fredoka"
               style="min-width: 220px"
             >
-              <q-img src="src/assets/YouMovieLogoWhite.svg"></q-img>
+              <q-img src="~assets/YouMovieLogoWhite.svg"></q-img>
             </div>
             <div class="text-white q-my-sm text-h5 text-center">YouMovie</div>
           </div>

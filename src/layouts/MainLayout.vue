@@ -132,7 +132,7 @@ export default defineComponent({
 
     let linkIMG
     if (user.photoURL == null) {
-      linkIMG = "src/assets/default.jpg"
+      linkIMG = "~assets/default.jpg"
     }else{
       linkIMG = user.photoURL
     }
