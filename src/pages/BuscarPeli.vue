@@ -37,7 +37,7 @@ export default defineComponent({
 
     watch(search, () => {
       if (search.value === "") {
-        state.listaPelis2 = state.listaPelis;
+        state.listaPelis2 = "";
       } else {
         state.listaPelis2 = state.listaPelis.filter((peli) =>
         peli.nombre.toLowerCase().includes(search.value.toLowerCase())
