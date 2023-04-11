@@ -39,8 +39,6 @@ export default defineComponent({
       state.listaPelis2 = pelis;
     });
 
-
-
     return {
       state,
     };
