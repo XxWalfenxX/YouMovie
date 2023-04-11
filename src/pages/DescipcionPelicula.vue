@@ -150,7 +150,7 @@ export default {
 }
 
 .img-titulo {
-  max-width: 27em;
+  width: 300px;
   margin-bottom: 1em;
   margin-right: 3em !important;
 }
