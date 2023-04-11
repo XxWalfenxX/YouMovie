@@ -71,23 +71,25 @@
       </div>
       <div class="col-md-2 col-8">
         <h5>Gestionar tu cuenta</h5>
-        <q-btn color="red">ELIMINAR CUENTA</q-btn>
+        <q-btn color="red" @click="eliminar()">ELIMINAR CUENTA</q-btn>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { useQuasar } from "quasar";
+import { useQuasar, LocalStorage } from "quasar";
 import { ref } from "vue";
 import cambiarImagenCuenta from "src/firebase/ActualizarImagen";
 import cambiarNombreUsuario from "src/firebase/ActualizarUsername";
 import actualizarPasswd from "src/firebase/ActualizarPasswd";
+import EliminarUsuario from "src/firebase/EliminarCuenta";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
     const $q = useQuasar();
     const user = $q.localStorage.getItem("user");
-
+    const router = useRouter();
     return {
       file: ref(null),
       userName: ref(null),
@@ -109,6 +111,12 @@ export default {
 
       cambiarPasswd(evt) {
         actualizarPasswd(evt.target[0].value);
+      },
+      eliminar() {
+        if (EliminarUsuario(user.email)) {
+          LocalStorage.remove("user");
+          router.push("/login");
+        }
       },
     };
   },
