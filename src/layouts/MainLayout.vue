@@ -44,8 +44,11 @@
       >
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img
+            <img v-if="avatar != null"
               :src="avatar"
+            />
+            <img v-else
+              src="~assets/default.jpg"
             />
           </q-avatar>
           <div class="text-weight-bold">{{ name}}</div>
@@ -130,12 +133,7 @@ export default defineComponent({
       });
     };
 
-    let linkIMG
-    if (user.photoURL == null) {
-      linkIMG = "~assets/default.jpg"
-    }else{
-      linkIMG = user.photoURL
-    }
+    let linkIMG = user.photoURL;
 
     return {
       avatar: linkIMG,
