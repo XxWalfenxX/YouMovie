@@ -61,7 +61,7 @@
               peli.categorias.find(
                 (ca) => ca.id === state.peliData.categorias[0].id
               )
-            )"
+            ).slice(0, 6)"
             :key="imagen.id"
             v-bind="imagen"
             @click="updatePeli(imagen.id)"
