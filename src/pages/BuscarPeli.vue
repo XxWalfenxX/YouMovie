@@ -2,7 +2,7 @@
   <div style="margin: 2em">
     <q-input standout v-model="search" placeholder="Titulo" :dense="dense" />
   </div>
-  <div class="q-pa-lg q-pa-lg-m row items-start">
+  <div class="row justify-center q-gutter-md">
     <TarjetaPeli
       v-for="imagen in state.listaPelis2"
       :key="imagen.id"

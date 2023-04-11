@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-lg row justify-center">
+  <div class="q-pa-lg row justify-center q-gutter-md" >
      <TarjetaPeli
       v-for="imagen in state.listaPelis2.filter(peli => state.listaPelis.includes(peli.id))"
       :key="imagen.id"
