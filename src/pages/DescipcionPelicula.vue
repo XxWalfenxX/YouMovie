@@ -107,6 +107,9 @@ export default {
     if (peliActual.id != idPeli || peliActual == null) {
       getUnaPelicula(idPeli)
         .then(function (data) {
+          if (data === null) {
+            router.push("/app");
+          }
           console.log("Ha pedido info a db");
           state.peliData = data;
           state.valoracion = Math.round(data.valoracion * 10);
@@ -122,7 +125,7 @@ export default {
     }
 
     const updatePeli = (id) => {
-      router.push({ name: "PeliculaView", params: { id } });
+      router.push({ name: "CargandoPeli", params: { id } });
     };
 
     return {

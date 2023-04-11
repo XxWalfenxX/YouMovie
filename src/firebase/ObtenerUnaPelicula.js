@@ -9,6 +9,7 @@ const getUnaPelicula = async (id) => {
     return docSnap.data();
   } else {
     console.log("No such document!");
+    return null;
   }
 }
 

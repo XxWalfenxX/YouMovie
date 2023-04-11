@@ -27,6 +27,11 @@ const routes = [
         name: "DescipcionPelicula",
         component: () => import("pages/DescipcionPelicula.vue"),
       },
+      {
+        path: "/cargando/:id",
+        name: "CargandoPeli",
+        component: () => import("pages/CargandoPeli.vue"),
+      },
       { path: "/mi-cuenta", component: () => import("pages/MiCuenta.vue") },
       { path: "/admin", component: () => import("pages/AdminPanel.vue") },
       { path: "/mi-lista", component: () => import("pages/MiLista.vue") },
