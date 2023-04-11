@@ -25,7 +25,7 @@
     <q-scroll-area style="height: 28rem; max-width: 100vw">
       <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
         <TarjetaPeli
-          v-for="imagen in state.listaPelis"
+          v-for="imagen in state.listaPelis.slice(0, 15)"
           :key="imagen.id"
           v-bind="imagen"
         />
