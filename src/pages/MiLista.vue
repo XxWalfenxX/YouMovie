@@ -1,10 +1,13 @@
 <template>
-  <div class="q-pa-lg row justify-center q-gutter-md" >
+  <div class="q-pa-lg row justify-center q-gutter-md" v-if="state.listaPelis.length !== 0">
      <TarjetaPeli
       v-for="imagen in state.listaPelis2.filter(peli => state.listaPelis.includes(peli.id))"
       :key="imagen.id"
       v-bind="imagen"
     />
+  </div>
+  <div class="q-pa-lg row justify-center q-gutter-md" v-else>
+     <h3 class="alert alert-primary">No tienes ninguna película guardada, agrega una pulsando en  <q-icon name="bookmark" color="teal" /></h3>
   </div>
 </template>
 
@@ -19,7 +22,7 @@ export default defineComponent({
   name: "MiLista",
 
   components: {
-    TarjetaPeli,
+    TarjetaPeli
   },
 
   setup() {
