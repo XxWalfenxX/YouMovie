@@ -9,10 +9,14 @@ export default async function GuardarPeliUsuario(ID, email) {
     const data = getUsuario.data();
     let pelisID = data.pelisID;
 
-    const result = pelisID.filter((e) => e !== ID);
-    result.push(ID);
-
-    console.log(result);
+    
+    let result;
+    if (pelisID.includes(ID)) {
+      result = pelisID.filter((e) => e !== ID);
+    } else {
+      result = pelisID.filter((e) => e !== ID);
+      result.push(ID);
+    }
 
     await updateDoc(docRef, {
       pelisID: result,
