@@ -32,114 +32,20 @@
       </div>
     </q-scroll-area>
 
-    <h4>Aventura</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Aventura')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
-    <h4>Acción</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Acción')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
-    <h4>Crimen</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Crimen')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
-    <h4>Comedia</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Comedia')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
-    <h4>Fantasía</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Fantasía')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
-    <h4>Animación</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Animación')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
-    <h4>Familia</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Familia')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
-    <h4>Drama</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Drama')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
-    <h4>Ciencia ficción</h4>
-    <q-scroll-area style="height: 28rem; max-width: 100vw">
-      <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
-        <TarjetaPeli
-          v-for="imagen in state.listaPelis.filter((peli) =>
-            peli.categorias.find((ca) => ca.name === 'Ciencia ficción')
-          )"
-          :key="imagen.id"
-          v-bind="imagen"
-        />
-      </div>
-    </q-scroll-area>
+    <div v-for="categoria in state.categorias" :key="categoria">
+      <h4>{{ categoria }}</h4>
+      <q-scroll-area style="height: 28rem; max-width: 100vw">
+        <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
+          <TarjetaPeli
+            v-for="imagen in state.listaPelis.filter((peli) =>
+              peli.categorias.find((ca) => ca.name === categoria)
+            )"
+            :key="imagen.id"
+            v-bind="imagen"
+          />
+        </div>
+      </q-scroll-area>
+    </div>
   </div>
 </template>
 
@@ -160,6 +66,18 @@ export default defineComponent({
 
   setup() {
     const state = reactive({
+      categorias: [
+        "Aventura",
+        "Acción",
+        "Acción",
+        "Crimen",
+        "Comedia",
+        "Fantasía",
+        "Animación",
+        "Familia",
+        "Drama",
+        "Ciencia ficción",
+      ],
       listaPelis: [],
     });
 
