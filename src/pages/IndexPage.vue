@@ -6,7 +6,7 @@
       v-model="slide"
       navigation
       infinite
-      :autoplay="autoplay"
+
       control-color="primary"
       arrows
       transition-prev="slide-right"
@@ -20,15 +20,20 @@
         :name="index + 1"
         :img-src="peli.imagenFondo"
       >
-        <div class="custom-caption">
-          <div class="contenedor-logo">
-            <q-img
-              :src="peli.logo"
-              spinner-color="white"
-              class="logo-carusel"
-            />
+        <router-link
+          :to="{ name: 'DescipcionPelicula', params: { id: peli.id } }"
+          style="text-decoration: none; color: white"
+        >
+          <div class="custom-caption">
+            <div class="contenedor-logo">
+              <q-img
+                :src="peli.logo"
+                spinner-color="white"
+                class="logo-carusel"
+              />
+            </div>
           </div>
-        </div>
+        </router-link>
       </q-carousel-slide>
     </q-carousel>
 
@@ -128,9 +133,11 @@ h4 {
   width: 25%;
   margin: 5em;
 }
-
+.custom-caption {
+  height: 100%;
+  }
 @media (max-width: 680px) {
-  .contenedor-logo{
+  .contenedor-logo {
     display: flex;
     justify-content: center;
   }
