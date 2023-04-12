@@ -7,6 +7,7 @@
       navigation
       infinite
       :autoplay="autoplay"
+      control-color="primary"
       arrows
       transition-prev="slide-right"
       transition-next="slide-left"
@@ -18,7 +19,17 @@
         :key="index"
         :name="index + 1"
         :img-src="peli.imagenFondo"
-      />
+      >
+        <div class="custom-caption">
+          <div class="contenedor-logo">
+            <q-img
+              :src="peli.logo"
+              spinner-color="white"
+              class="logo-carusel"
+            />
+          </div>
+        </div>
+      </q-carousel-slide>
     </q-carousel>
 
     <h4>Novedades</h4>
@@ -111,5 +122,21 @@ export default defineComponent({
 
 h4 {
   margin-bottom: 0;
+}
+
+.logo-carusel {
+  width: 25%;
+  margin: 5em;
+}
+
+@media (max-width: 680px) {
+  .contenedor-logo{
+    display: flex;
+    justify-content: center;
+  }
+  .logo-carusel {
+    width: 65%;
+    margin: 0;
+  }
 }
 </style>
