@@ -7,7 +7,7 @@
     />
   </div>
   <div class="q-pa-lg row justify-center q-gutter-md" v-else>
-     <h3 class="alert alert-primary">No tienes ninguna película guardada, agrega una pulsando en  <q-icon name="bookmark" color="teal" /></h3>
+     <h3 class="alert">No tienes ninguna película guardada, agrega una pulsando en  <q-icon name="bookmark" color="teal" /></h3>
   </div>
 </template>
 
@@ -51,6 +51,24 @@ export default defineComponent({
 
 <style>
 
-
+.alert {
+  --bs-alert-bg: transparent;
+    --bs-alert-padding-x: 1rem;
+    --bs-alert-padding-y: 1rem;
+    --bs-alert-margin-bottom: 1rem;
+    --bs-alert-color: inherit;
+    --bs-alert-border-color: transparent;
+    --bs-alert-border: 1px solid #9ec5fe;
+    --bs-alert-border-radius: 0.375rem;;
+    --bs-alert-link-color: inherit;
+    position: relative;
+    padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+    margin-bottom: var(--bs-alert-margin-bottom);
+    color: var(--bs-alert-color);
+    background-color: #cfe2ff;
+    border: var(--bs-alert-border);
+    border-radius: var(--bs-alert-border-radius);
+    color: black;
+}
 
 </style>
