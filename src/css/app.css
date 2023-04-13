@@ -17,6 +17,11 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-track {
   background: white;        /* color of the tracking area */
 }
+@media (prefers-color-scheme: dark) {
+  body::-webkit-scrollbar-track {
+    background: black;        /* color of the tracking area */
+  }
+}
 
 body::-webkit-scrollbar-thumb {
   background-color: #ff913e;    /* color of the scroll thumb */
