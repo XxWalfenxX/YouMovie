@@ -6,7 +6,6 @@
       v-model="slide"
       navigation
       infinite
-      :autoplay="autoplay"
       control-color="primary"
       arrows
       transition-prev="slide-right"
@@ -15,7 +14,7 @@
       @mouseleave="autoplay = true"
     >
       <q-carousel-slide
-        v-for="(peli, index) in state.listaPelis.slice(0, 5)"
+        v-for="(peli, index) in state.pelisCarrousel"
         :key="index"
         :name="index + 1"
         :img-src="peli.imagenFondo"
@@ -98,10 +97,13 @@ export default defineComponent({
         "Ciencia ficción",
       ],
       listaPelis: [],
+      pelisCarrousel:[],
     });
 
     getPeliculas.then((pelis) => {
       state.listaPelis = pelis;
+      const pelis2 = [...pelis];
+      state.pelisCarrousel = pelis2.sort(() => Math.random() - 0.5).slice(0, 5);
     });
 
     return {
@@ -133,8 +135,11 @@ h4 {
 }
 
 .logo-carusel {
-  width: 25%;
+  object-fit: cover;
+  width: 20em;
+  max-width: 20em;
   margin: 5em;
+  margin-left: 6em;
 }
 .custom-caption {
   height: 100%;
