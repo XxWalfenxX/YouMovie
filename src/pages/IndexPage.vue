@@ -6,7 +6,7 @@
       v-model="slide"
       navigation
       infinite
-
+      :autoplay="autoplay"
       control-color="primary"
       arrows
       transition-prev="slide-right"
