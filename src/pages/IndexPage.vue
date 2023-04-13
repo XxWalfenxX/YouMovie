@@ -8,16 +8,19 @@
       infinite
       control-color="primary"
       arrows
+      :autoplay="autoplay"
       transition-prev="slide-right"
       transition-next="slide-left"
       @mouseenter="autoplay = false"
       @mouseleave="autoplay = true"
+
     >
       <q-carousel-slide
         v-for="(peli, index) in state.pelisCarrousel"
         :key="index"
         :name="index + 1"
         :img-src="peli.imagenFondo"
+        style="overflow: hidden;"
       >
         <router-link
           :to="{ name: 'DescipcionPelicula', params: { id: peli.id } }"
