@@ -97,12 +97,12 @@ const linksList = [
   {
     title: "Ayuda",
     icon: "help",
-    link: "https://quasar.dev",
+    link: "/ayuda",
   },
   {
     title: "Donar",
     icon: "attach_money",
-    link: "https://quasar.dev",
+    link: "/donar",
   },
 ];
 

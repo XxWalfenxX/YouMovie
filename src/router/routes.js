@@ -36,6 +36,7 @@ const routes = [
       { path: "/admin", component: () => import("pages/AdminPanel.vue") },
       { path: "/mi-lista", component: () => import("pages/MiLista.vue") },
       { path: "/buscar", component: () => import("pages/BuscarPeli.vue") },
+      { path: "/ayuda", component: () => import("pages/AyudaWeb.vue") },
     ],
     meta: { auth: true },
   },
