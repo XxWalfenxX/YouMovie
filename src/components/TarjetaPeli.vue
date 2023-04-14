@@ -13,7 +13,7 @@
 
     <q-card-actions align="left">
       <q-btn flat round color="teal" icon="bookmark" @click="GuardarLista" />
-      <q-btn flat round class="color-focus" color="amber-10" icon="share" @click="Compartir" />
+      <q-btn flat round class="color-focus" color="primary" icon="share" @click="Compartir" />
     </q-card-actions>
   </q-card>
 </template>
@@ -102,6 +102,6 @@ export default defineComponent({
 }
 
 .color-focus:hover {
-  color: var(--q-primary) !important;
+  color: #ff6f00 !important;;
 }
 </style>
