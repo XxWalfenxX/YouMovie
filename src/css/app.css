@@ -10,20 +10,20 @@
 :root {
   --q-primary:  #ff913e;
 }
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, .absolute-full::-webkit-scrollbar {
   width: 12px;               /* width of the entire scrollbar */
 }
 
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track, .absolute-full::-webkit-scrollbar-track  {
   background: white;        /* color of the tracking area */
 }
 @media (prefers-color-scheme: dark) {
-  body::-webkit-scrollbar-track {
+  body::-webkit-scrollbar-track, .absolute-full::-webkit-scrollbar-track {
     background: black;        /* color of the tracking area */
   }
 }
 
-body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb, .absolute-full::-webkit-scrollbar-thumb {
   background-color: #ff913e;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 3px solid #ff913e;  /* creates padding around scroll thumb */
