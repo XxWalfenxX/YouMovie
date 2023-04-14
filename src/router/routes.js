@@ -37,6 +37,7 @@ const routes = [
       { path: "/mi-lista", component: () => import("pages/MiLista.vue") },
       { path: "/buscar", component: () => import("pages/BuscarPeli.vue") },
       { path: "/ayuda", component: () => import("pages/AyudaWeb.vue") },
+      { path: "/donar", component: () => import("pages/DonarWeb.vue") },
     ],
     meta: { auth: true },
   },
