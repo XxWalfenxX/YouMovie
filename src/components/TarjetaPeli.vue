@@ -13,7 +13,7 @@
 
     <q-card-actions align="left">
       <q-btn flat round color="teal" icon="bookmark" @click="GuardarLista" />
-      <q-btn flat round color="primary" icon="share" @click="Compartir" />
+      <q-btn flat round class="color-focus" color="amber-10" icon="share" @click="Compartir" />
     </q-card-actions>
   </q-card>
 </template>
@@ -99,5 +99,9 @@ export default defineComponent({
 .cartelera-img {
   border-radius: var(--card-border);
   pointer-events: none;
+}
+
+.color-focus:hover {
+  color: var(--q-primary) !important;
 }
 </style>
