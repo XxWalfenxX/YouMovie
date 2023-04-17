@@ -10,6 +10,8 @@
 :root {
   --q-primary:  #ff913e;
 }
+
+
 body::-webkit-scrollbar, .absolute-full::-webkit-scrollbar {
   width: 12px;               /* width of the entire scrollbar */
 }

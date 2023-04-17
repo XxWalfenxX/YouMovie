@@ -5,6 +5,7 @@
         <iframe
           width="100%"
           height="100%"
+          style="border-radius: 5px;"
           :src="state.peliData.linkVideostation"
           frameborder="0"
           allowfullscreen

@@ -2,12 +2,12 @@
   <q-card class="my-card">
     <q-btn
       v-ripple
-      class="btn-card cursor-pointer q-hoverable"
+      class="btn-card cursor-pointer q-hoverable img-hover"
       flat
       @click="linkClick"
       :to="{ name: 'DescipcionPelicula', params: { id: id } }"
     >
-      <span class="q-focus-helper"></span>
+      <span class="q-focus-helper "></span>
       <img class="cartelera-img" :src="poster" />
     </q-btn>
 
@@ -103,5 +103,14 @@ export default defineComponent({
 
 .color-focus:hover {
   color: #ff6f00 !important;;
+}
+
+
+.img-hover {
+  border: 2px solid transparent;
+}
+
+.img-hover:hover {
+  border: 2px solid;
 }
 </style>
