@@ -92,7 +92,6 @@ export default defineComponent({
       categorias: [
         "Aventura",
         "Acción",
-        "Acción",
         "Crimen",
         "Comedia",
         "Fantasía",

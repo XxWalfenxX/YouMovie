@@ -9,12 +9,14 @@
 }
 :root {
   --q-primary:  #ff913e;
+  user-select: none;
 }
 
 *::selection {
   background-color: var(--q-primary);
+  color: beige;
+  
 }
-
 
 body::-webkit-scrollbar, .absolute-full::-webkit-scrollbar {
   width: 12px;               /* width of the entire scrollbar */
