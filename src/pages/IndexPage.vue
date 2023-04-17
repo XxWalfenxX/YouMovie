@@ -107,8 +107,7 @@ export default defineComponent({
 
     getPeliculas.then((pelis) => {
       state.listaPelis = pelis;
-      const pelis2 = [...pelis];
-      state.pelisCarrousel = pelis2.sort(() => Math.random() - 0.5).slice(0, 5);
+      state.pelisCarrousel = [...pelis].sort(() => Math.random() - 0.5).slice(0, 5);
     });
 
     return {

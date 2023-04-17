@@ -11,6 +11,10 @@
   --q-primary:  #ff913e;
 }
 
+*::selection {
+  background-color: var(--q-primary);
+}
+
 
 body::-webkit-scrollbar, .absolute-full::-webkit-scrollbar {
   width: 12px;               /* width of the entire scrollbar */
