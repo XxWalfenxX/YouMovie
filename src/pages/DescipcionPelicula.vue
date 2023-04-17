@@ -64,7 +64,6 @@
             ).slice(0, 6)"
             :key="imagen.id"
             v-bind="imagen"
-            @click="updatePeli(imagen.id)"
           />
         </div>
       </q-scroll-area>
@@ -124,13 +123,8 @@ export default {
       state.valoracion = Math.round(peliActual.valoracion * 10);
     }
 
-    const updatePeli = (id) => {
-      router.push({ name: "CargandoPeli", params: { id } });
-    };
-
     return {
-      state,
-      updatePeli
+      state
     };
   },
 };

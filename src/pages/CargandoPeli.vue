@@ -19,7 +19,7 @@ export default {
     const idPeli = useRoute().params.id;
     this.timerId = setTimeout(() => {
       router.push({ name: 'DescipcionPelicula', params: { idPeli }});
-    }, 5000)
+    }, 0)
   },
   beforeUnmount() {
     clearTimeout(this.timerId)

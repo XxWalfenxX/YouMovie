@@ -5,7 +5,7 @@
       class="btn-card cursor-pointer q-hoverable img-hover"
       flat
       @click="linkClick"
-      :to="{ name: 'DescipcionPelicula', params: { id: id } }"
+      :to="reload ? { name: 'DescipcionPelicula', params: { id: id } } : { name: 'CargandoPeli', params: { id: id } }"
     >
       <span class="q-focus-helper "></span>
       <img class="cartelera-img" :src="poster" />
@@ -26,17 +26,18 @@ import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "TarjetaPeli",
-  props: [
-    "id",
-    "nombre",
-    "descripcion",
-    "categorias",
-    "valoracion",
-    "poster",
-    "imagenFondo",
-    "logo",
-    "linkVideostation",
-  ],
+  props: {
+    id: String,
+    nombre: String,
+    descripcion: String,
+    categorias: Array,
+    valoracion: Number,
+    poster: String,
+    imagenFondo: String,
+    logo: String,
+    linkVideostation: String,
+    reload: Boolean,
+  },
 
   setup(props) {
     const $q = useQuasar();

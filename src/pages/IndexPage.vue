@@ -46,6 +46,7 @@
           v-for="imagen in state.listaPelis.slice(0, 15)"
           :key="imagen.id"
           v-bind="imagen"
+          :reload="reload"
         />
       </div>
     </q-scroll-area>
@@ -60,6 +61,7 @@
             )"
             :key="imagen.id"
             v-bind="imagen"
+            :reload="reload"
           />
         </div>
       </q-scroll-area>
@@ -113,6 +115,7 @@ export default defineComponent({
       state,
       slide: ref(1),
       autoplay: ref(true),
+      reload: true,
     };
   },
 });
