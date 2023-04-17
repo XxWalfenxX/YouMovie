@@ -5,7 +5,7 @@
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title class="infinite">
-          <router-link to="/" style="text-decoration: none; color: white;">
+          <router-link to="/" style="text-decoration: none; color: white">
             <q-avatar square>
               <img style="color: white" src="~assets/YouMovieLogoWhite.svg" />
             </q-avatar>
@@ -23,7 +23,8 @@
     </q-header>
     <q-drawer v-model="leftDrawerOpen" side="left" overlay>
       <q-scroll-area
-        style=" height: calc(100% - 150px);
+        style="
+          height: calc(100% - 150px);
           margin-top: 150px;
           border-right: 1px solid #ddd;
         "
@@ -44,14 +45,10 @@
       >
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img v-if="avatar != null"
-              :src="avatar"
-            />
-            <img v-else
-              src="~assets/default.jpg"
-            />
+            <img v-if="avatar != null" :src="avatar" />
+            <img v-else src="~assets/default.jpg" />
           </q-avatar>
-          <div class="text-weight-bold">{{ name}}</div>
+          <div class="text-weight-bold">{{ name }}</div>
         </div>
       </q-img>
     </q-drawer>
@@ -60,7 +57,7 @@
       <q-dialog v-model="confirm" persistent>
         <q-card>
           <q-card-section class="row items-center">
-            <q-icon name="info" color="primary" size="3em"/>
+            <q-icon name="info" color="primary" size="3em" />
             <span class="q-ml-sm">¿Deseas cerrar tu sesión?</span>
           </q-card-section>
 
@@ -82,11 +79,12 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, reactive } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 import signout from "src/firebase/firebase-signout";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
+import AdminAuth from "src/firebase/AdminAuth";
 
 const linksList = [
   {
@@ -127,11 +125,25 @@ export default defineComponent({
     const router = useRouter();
     const user = $q.localStorage.getItem("user");
 
+    const state = reactive({
+      linksList: linksList,
+    });
+
     const logout = () => {
       signout().then(() => {
         router.push("/login");
       });
     };
+
+    state.admin = AdminAuth(user.email).then((v) => {
+      if (v == true) {
+        linksList.push({
+          title: "Administración",
+          icon: "build",
+          link: "/admin",
+        });
+      }
+    });
 
     let linkIMG = user.photoURL;
 
@@ -145,15 +157,14 @@ export default defineComponent({
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
+      state,
     };
   },
 });
 </script>
 
 <style>
-
 .icono {
   font-size: 2em;
 }
-
 </style>
