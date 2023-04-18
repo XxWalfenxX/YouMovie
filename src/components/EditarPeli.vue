@@ -129,7 +129,7 @@ import { defineComponent, ref, reactive } from "vue";
 import getPeliculas from "src/firebase/ObtenerPeliculas";
 
 const columns = [
-  { name: "id", align: "center", label: "ID", field: "id" },
+  { name: "id", align: "left", label: "ID", field: "id" },
   {
     name: "nombre",
     style: "min-width: 15em; width: 20em",
@@ -146,20 +146,27 @@ const columns = [
   },
   {
     name: "valoracion",
-    align: "center",
+    align: "left",
     label: "Valoración",
     field: "valoracion",
   },
-  { name: "imagenFondo", label: "URL Imagen Fondo", field: "imagenFondo" },
+  {
+    name: "imagenFondo",
+    align: "left",
+    label: "URL Imagen Fondo",
+    field: "imagenFondo",
+  },
   {
     name: "linkVideostation",
+    align: "left",
     label: "URL Videostation",
     field: "linkVideostation",
   },
-  { name: "logo", label: "URL Logo", field: "logo" },
-  { name: "poster", label: "URL Poster", field: "poster" },
+  { name: "logo", align: "left", label: "URL Logo", field: "logo" },
+  { name: "poster", align: "left", label: "URL Poster", field: "poster" },
   {
     name: "categorias",
+    align: "left",
     style: "min-width: 45em; width: 60em",
     label: "Categorias",
     field: "categorias",
