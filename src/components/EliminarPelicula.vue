@@ -37,6 +37,7 @@
   </div>
 </template>
 <script>
+import EliminarID from "src/tmdb/EliminarID"
 import { defineComponent, ref } from "vue";
 import { useQuasar } from "quasar";
 
@@ -49,7 +50,10 @@ export default defineComponent({
       tmdb: ref(null),
       confirm: ref(false),
       eliminarPeli() {
-        console.log(this.tmdb);;
+        console.log(this.tmdb);
+        if (this.tmdb !== null) {
+          EliminarID(this.tmdb)
+        }
       },
     };
   },
