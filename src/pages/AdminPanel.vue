@@ -2,7 +2,8 @@
   <div>
     <q-splitter
       v-model="splitterModel"
-      style="height: 100%"
+      class="centrado"
+      disable
     >
 
       <template v-slot:before>
@@ -63,8 +64,14 @@ export default defineComponent({
   setup() {
     return {
       tab: ref('add'),
-      splitterModel: ref(20)
+      splitterModel: ref(10)
     };
   },
 });
 </script>
+<style>
+.centrado {
+    height: calc(100vh - 98px);
+}
+
+</style>
