@@ -4,6 +4,7 @@
       v-model="splitterModel"
       class="centrado"
       disable
+      unit="px"
     >
 
       <template v-slot:before>
@@ -63,7 +64,7 @@ export default defineComponent({
   setup() {
     return {
       tab: ref('add'),
-      splitterModel: ref(10)
+      splitterModel: ref(200)
     };
   },
 });
