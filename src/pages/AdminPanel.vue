@@ -38,10 +38,7 @@
           </q-tab-panel>
 
           <q-tab-panel name="remove">
-            <div class="text-h4 q-mb-md">Movies</div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+            <EliminarPelicula/>
           </q-tab-panel>
         </q-tab-panels>
       </template>
@@ -53,12 +50,14 @@
 <script>
 import { defineComponent, ref } from "vue";
 import AgregarPeli from "src/components/AgregarPeli.vue";
+import EliminarPelicula from "src/components/EliminarPelicula.vue";
 
 export default defineComponent({
   name: "AdminPanel",
 
   components:{
     AgregarPeli,
+    EliminarPelicula,
   },
 
   setup() {
