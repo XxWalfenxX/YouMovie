@@ -1,6 +1,6 @@
 // https://api.themoviedb.org/3/movie/5559?api_key=2d890a918a8849421840dd697582ee3b&language=es-ES
 import { doc, setDoc } from "firebase/firestore";
-
+import { Notify } from "quasar";
 import { db } from "src/firebase/index";
 
 export default async function CollectionMovie(ID, linkSynology) {
