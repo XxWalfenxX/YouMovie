@@ -1,5 +1,8 @@
 <template>
   <div class="q-pa-md">
+    <div style="margin: 2em">
+      <q-input standout v-model="search" placeholder="Titulo o ID" :dense="dense" />
+    </div>
     <q-table
       :rows="state.rows"
       :columns="columns"
@@ -8,6 +11,7 @@
       row-key="name"
       wrap-cells
       separator="cell"
+      :filter="search"
     >
       <template v-slot:body="props">
         <q-tr :props="props">
@@ -126,18 +130,18 @@
 </template>
 
 <script>
-import { defineComponent, ref, reactive } from "vue";
+import { defineComponent, ref, reactive, watch } from "vue";
 import getPeliculas from "src/firebase/ObtenerPeliculas";
 
 const columns = [
-  { name: "id", align: "left", label: "ID", field: "id", sortable: true},
+  { name: "id", align: "left", label: "ID", field: "id", sortable: true },
   {
     name: "nombre",
     style: "min-width: 15em; width: 20em",
     align: "left",
     label: "Nombre",
     field: "nombre",
-    sortable: true
+    sortable: true,
   },
   {
     name: "descripcion",
@@ -151,7 +155,7 @@ const columns = [
     align: "left",
     label: "Valoración",
     field: "valoracion",
-    sortable: true
+    sortable: true,
   },
   {
     name: "imagenFondo",
@@ -182,7 +186,7 @@ const columns = [
     align: "left",
     style: "min-width: 45em; width: 60em",
     label: "Categorias",
-    field: "categorias"
+    field: "categorias",
   },
 ];
 
@@ -193,6 +197,8 @@ export default defineComponent({
       rows: [],
     });
 
+    const search = ref("");
+
     getPeliculas.then((pelis) => {
       state.rows = pelis;
     });
@@ -200,6 +206,8 @@ export default defineComponent({
     return {
       state,
       columns,
+      search,
+      dense: ref(false),
     };
   },
 });
