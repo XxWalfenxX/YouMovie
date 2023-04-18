@@ -1,31 +1,31 @@
 <template>
   <div class="q-pa-md">
     <q-table
-      :rows="rows"
+      :rows="state.rows"
       :columns="columns"
       title="Lista de peliculas"
-      :rows-per-page-options="[]"
+      :rows-per-page-options="[5, 10, 0]"
       row-key="name"
       wrap-cells
     >
       <template v-slot:body="props">
         <q-tr :props="props">
-          <q-td key="desc" :props="props">
-            {{ props.row.name }}
-            <q-popup-edit v-model="props.row.name" v-slot="scope">
+          <q-td key="id" :props="props">
+            {{ props.row.id }}
+            <q-popup-edit v-model.number="props.row.id" v-slot="scope">
               <q-input
-                v-model="scope.value"
+                type="number"
+                v-model.number="scope.value"
                 dense
                 autofocus
-                counter
                 @keyup.enter="scope.set"
               />
             </q-popup-edit>
           </q-td>
 
-          <q-td key="comment" :props="props">
-            <div v-html="props.row.comment"></div>
-            <q-popup-edit buttons v-model="props.row.comment" v-slot="scope">
+          <q-td key="nombre" :props="props">
+            <div v-html="props.row.nombre"></div>
+            <q-popup-edit buttons v-model="props.row.nombre" v-slot="scope">
               <q-editor
                 v-model="scope.value"
                 min-height="5rem"
@@ -35,9 +35,25 @@
             </q-popup-edit>
           </q-td>
 
-          <q-td key="calories" :props="props">
-            {{ props.row.calories }}
-            <q-popup-edit v-model.number="props.row.calories" v-slot="scope">
+          <q-td key="descripcion" :props="props">
+            {{ props.row.descripcion }}
+            <q-popup-edit
+              buttons
+              v-model="props.row.descripcion"
+              v-slot="scope"
+            >
+              <q-editor
+                v-model="scope.value"
+                min-height="5rem"
+                autofocus
+                @keyup.enter.stop
+              />
+            </q-popup-edit>
+          </q-td>
+
+          <q-td key="valoracion" :props="props">
+            <div class="text-pre-wrap">{{ props.row.valoracion }}</div>
+            <q-popup-edit v-model.number="props.row.valoracion" v-slot="scope">
               <q-input
                 type="number"
                 v-model.number="scope.value"
@@ -47,13 +63,55 @@
               />
             </q-popup-edit>
           </q-td>
-
-          <q-td key="fat" :props="props">
-            <div class="text-pre-wrap">{{ props.row.fat }}</div>
-            <q-popup-edit v-model.number="props.row.fat" v-slot="scope">
+          <q-td key="imagenFondo" :props="props">
+            <div class="text-pre-wrap">{{ props.row.imagenFondo }}</div>
+            <q-popup-edit v-model="props.row.imagenFondo" v-slot="scope">
               <q-input
-                type="number"
-                v-model.number="scope.value"
+                v-model="scope.value"
+                dense
+                autofocus
+                @keyup.enter="scope.set"
+              />
+            </q-popup-edit>
+          </q-td>
+          <q-td key="linkVideostation" :props="props">
+            <div class="text-pre-wrap">{{ props.row.linkVideostation }}</div>
+            <q-popup-edit v-model="props.row.linkVideostation" v-slot="scope">
+              <q-input
+                v-model="scope.value"
+                dense
+                autofocus
+                @keyup.enter="scope.set"
+              />
+            </q-popup-edit>
+          </q-td>
+          <q-td key="logo" :props="props">
+            <div class="text-pre-wrap">{{ props.row.logo }}</div>
+            <q-popup-edit v-model="props.row.logo" v-slot="scope">
+              <q-input
+                v-model="scope.value"
+                dense
+                autofocus
+                @keyup.enter="scope.set"
+              />
+            </q-popup-edit>
+          </q-td>
+          <q-td key="poster" :props="props">
+            <div class="text-pre-wrap">{{ props.row.poster }}</div>
+            <q-popup-edit v-model="props.row.poster" v-slot="scope">
+              <q-input
+                v-model="scope.value"
+                dense
+                autofocus
+                @keyup.enter="scope.set"
+              />
+            </q-popup-edit>
+          </q-td>
+          <q-td key="categorias" :props="props">
+            <div class="text-pre-wrap">{{ props.row.categorias }}</div>
+            <q-popup-edit v-model="props.row.categorias" v-slot="scope">
+              <q-input
+                v-model="scope.value"
                 dense
                 autofocus
                 @keyup.enter="scope.set"
@@ -67,104 +125,60 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-const columns = [
-  {
-    name: "desc",
-    style: "min-width: 160px; width: 160px",
-    align: "left",
-    label: "Dessert",
-    field: "name",
-  },
-  {
-    name: "comment",
-    style: "min-width: 200px; width: 200px",
-    align: "left",
-    label: "Comment (editable)",
-    field: "comment",
-  },
-  { name: "calories", align: "center", label: "Calories", field: "calories" },
-  { name: "fat", label: "Fat (g)", field: "fat" },
-];
+import { defineComponent, ref, reactive } from "vue";
+import getPeliculas from "src/firebase/ObtenerPeliculas";
 
-const rows = [
+const columns = [
+  { name: "id", align: "center", label: "ID", field: "id" },
   {
-    name: "Frozen Yogurt",
-    comment:
-      "<p>It's cold but great and tastes different than normal ice cream, but it's great too!</p><p><strong>Have a taste!</strong></p>",
-    calories: 159,
-    fat: 6.0,
+    name: "nombre",
+    style: "min-width: 15em; width: 20em",
+    align: "left",
+    label: "Nombre",
+    field: "nombre",
   },
   {
-    name: "Ice cream sandwich",
-    comment:
-      "<p>It's also cold but great!</p><p><strong>Have a taste!</strong></p>",
-    calories: 237,
-    fat: 9.0,
+    name: "descripcion",
+    style: "min-width: 45em; width: 60em",
+    align: "left",
+    label: "Descripción",
+    field: "descripcion",
   },
   {
-    name: "Eclair",
-    comment:
-      "<p>It's not cold and also great!</p><p><strong>Have a taste!</strong></p>",
-    calories: 262,
-    fat: 16.0,
+    name: "valoracion",
+    align: "center",
+    label: "Valoración",
+    field: "valoracion",
   },
+  { name: "imagenFondo", label: "URL Imagen Fondo", field: "imagenFondo" },
   {
-    name: "Cupcake",
-    comment:
-      "<p>It could be warm and it's great!</p><p><strong>Have a taste!</strong></p>",
-    calories: 305,
-    fat: 3.7,
+    name: "linkVideostation",
+    label: "URL Videostation",
+    field: "linkVideostation",
   },
+  { name: "logo", label: "URL Logo", field: "logo" },
+  { name: "poster", label: "URL Poster", field: "poster" },
   {
-    name: "Gingerbread",
-    comment:
-      "<p>It's spicy and great!</p><p><strong>Have a taste!</strong></p>",
-    calories: 356,
-    fat: 16.0,
-  },
-  {
-    name: "Jelly bean",
-    comment:
-      "<p>It's neither cold or warm, but great!</p><p><strong>Have one or two or several, but not too many!</strong></p>",
-    calories: 375,
-    fat: 0.0,
-  },
-  {
-    name: "Lollipop",
-    comment:
-      "<p>It's sticky and normally sweet!</p><p><strong>Have a lick!</strong></p>",
-    calories: 392,
-    fat: 0.2,
-  },
-  {
-    name: "Honeycomb",
-    comment:
-      "<p>It's special and sweet!</p><p><strong>Have a taste!</strong></p>",
-    calories: 408,
-    fat: 3.2,
-  },
-  {
-    name: "Donut",
-    comment:
-      "<p>It's an American classic glazed!</p><p><strong>Have one with coffee!</strong></p>",
-    calories: 452,
-    fat: 25.0,
-  },
-  {
-    name: "KitKat",
-    comment:
-      "<p>It's good with a break!</p><p><strong>Have a section to perfection!</strong></p>",
-    calories: 518,
-    fat: 26.0,
+    name: "categorias",
+    style: "min-width: 45em; width: 60em",
+    label: "Categorias",
+    field: "categorias",
   },
 ];
 
 export default defineComponent({
   name: "EditarPeli",
   setup() {
+    const state = reactive({
+      rows: [],
+    });
+
+    getPeliculas.then((pelis) => {
+      state.rows = pelis;
+    });
+
     return {
-      rows: ref(rows),
+      state,
       columns,
     };
   },
