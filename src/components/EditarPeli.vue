@@ -7,6 +7,7 @@
       :rows-per-page-options="[5, 10, 0]"
       row-key="name"
       wrap-cells
+      separator="cell"
     >
       <template v-slot:body="props">
         <q-tr :props="props">
@@ -129,13 +130,14 @@ import { defineComponent, ref, reactive } from "vue";
 import getPeliculas from "src/firebase/ObtenerPeliculas";
 
 const columns = [
-  { name: "id", align: "left", label: "ID", field: "id" },
+  { name: "id", align: "left", label: "ID", field: "id", sortable: true},
   {
     name: "nombre",
     style: "min-width: 15em; width: 20em",
     align: "left",
     label: "Nombre",
     field: "nombre",
+    sortable: true
   },
   {
     name: "descripcion",
@@ -149,6 +151,7 @@ const columns = [
     align: "left",
     label: "Valoración",
     field: "valoracion",
+    sortable: true
   },
   {
     name: "imagenFondo",
@@ -162,14 +165,24 @@ const columns = [
     label: "URL Videostation",
     field: "linkVideostation",
   },
-  { name: "logo", align: "left", label: "URL Logo", field: "logo" },
-  { name: "poster", align: "left", label: "URL Poster", field: "poster" },
+  {
+    name: "logo",
+    align: "left",
+    label: "URL Logo",
+    field: "logo",
+  },
+  {
+    name: "poster",
+    align: "left",
+    label: "URL Poster",
+    field: "poster",
+  },
   {
     name: "categorias",
     align: "left",
     style: "min-width: 45em; width: 60em",
     label: "Categorias",
-    field: "categorias",
+    field: "categorias"
   },
 ];
 
