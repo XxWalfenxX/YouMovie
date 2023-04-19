@@ -64,7 +64,7 @@
 
           <q-td key="valoracion" :props="props">
             <div class="text-pre-wrap">{{ props.row.valoracion }}</div>
-            <q-popup-edit v-model.number="props.row.valoracion" v-slot="scope">
+            <q-popup-edit buttons v-model.number="props.row.valoracion" v-slot="scope">
               <q-input
                 type="number"
                 v-model.number="scope.value"
@@ -76,7 +76,7 @@
           </q-td>
           <q-td key="imagenFondo" :props="props">
             <div class="text-pre-wrap">{{ props.row.imagenFondo }}</div>
-            <q-popup-edit v-model="props.row.imagenFondo" v-slot="scope">
+            <q-popup-edit buttons v-model="props.row.imagenFondo" v-slot="scope">
               <q-input
                 v-model="scope.value"
                 dense
@@ -87,7 +87,7 @@
           </q-td>
           <q-td key="linkVideostation" :props="props">
             <div class="text-pre-wrap">{{ props.row.linkVideostation }}</div>
-            <q-popup-edit v-model="props.row.linkVideostation" v-slot="scope">
+            <q-popup-edit buttons v-model="props.row.linkVideostation" v-slot="scope">
               <q-input
                 v-model="scope.value"
                 dense
@@ -98,7 +98,7 @@
           </q-td>
           <q-td key="logo" :props="props">
             <div class="text-pre-wrap">{{ props.row.logo }}</div>
-            <q-popup-edit v-model="props.row.logo" v-slot="scope">
+            <q-popup-edit buttons v-model="props.row.logo" v-slot="scope">
               <q-input
                 v-model="scope.value"
                 dense
@@ -109,7 +109,7 @@
           </q-td>
           <q-td key="poster" :props="props">
             <div class="text-pre-wrap">{{ props.row.poster }}</div>
-            <q-popup-edit v-model="props.row.poster" v-slot="scope">
+            <q-popup-edit buttons v-model="props.row.poster" v-slot="scope">
               <q-input
                 v-model="scope.value"
                 dense
@@ -120,7 +120,7 @@
           </q-td>
           <q-td key="categorias" :props="props">
             <div class="text-pre-wrap">{{ props.row.categorias }}</div>
-            <q-popup-edit v-model="props.row.categorias" v-slot="scope">
+            <q-popup-edit buttons v-model="props.row.categorias" v-slot="scope">
               <q-input
                 v-model="scope.value"
                 dense
