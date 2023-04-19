@@ -34,11 +34,13 @@
               <q-form ref="form" class="q-gutter-md" @submit="submit">
                 <q-input v-model="user.email" label="Email" name="Email" />
 
+
+
                 <div>
                   <q-btn
                     class="full-width fredoka"
                     color="primary"
-                    label="Login"
+                    label="Enviar correo de recuperación"
                     rounded
                     type="submit"
                   ></q-btn>
@@ -48,6 +50,11 @@
                       ¿Aún no tienes una cuenta?
                       <router-link class="text-primary" to="/register"
                         >Crear cuenta</router-link
+                      >
+                    </div>
+                    <div class="q-mt-sm">
+                      <router-link class="text-primary" to="/"
+                        >Iniciar Sesión</router-link
                       >
                     </div>
                   </div>
@@ -63,7 +70,7 @@
 
 <script setup>
 import { ref, reactive } from "vue";
-import login from "src/firebase/firebase-login";
+import restablecerPass from "src/firebase/EmailRecuperacion";
 import { useRouter } from "vue-router";
 
 const user = reactive({
@@ -75,10 +82,8 @@ const router = useRouter();
 
 const submit = async () => {
   if (form.value.validate()) {
-    try {
-      await login(user);
-      router.push("/app");
-    } catch (err) {}
+    restablecerPass(user.email)
+    router.push("/")
   }
 };
 </script>
