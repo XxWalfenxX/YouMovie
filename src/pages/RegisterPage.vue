@@ -1,7 +1,4 @@
 <template>
-  <!-- Template by Joabson Arley
-   https://github.com/Joabsonlg/quasar-template -->
-
   <q-card class="q-ma-xl sombra">
     <div class="row">
       <div class="col-0 col-sm-5 bg-primary rounded-left-borders xs-hide">
