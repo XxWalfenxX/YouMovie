@@ -22,7 +22,12 @@
               <div class="column flex-center">
                 <div class="text-h6">¿Te gusta YouMovie?</div>
                 <p>Con una donación puedes ayudar a que sigamos funcionando</p>
-                <q-btn label="Donar" icon="attach_money" color="primary" href="https://youtu.be/dQw4w9WgXcQ"/>
+                <q-btn
+                  label="Donar"
+                  icon="attach_money"
+                  color="primary"
+                  href="https://youtu.be/dQw4w9WgXcQ"
+                />
               </div>
             </q-tab-panel>
           </q-tab-panels>

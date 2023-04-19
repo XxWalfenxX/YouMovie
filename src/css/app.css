@@ -8,31 +8,30 @@
   font-family: "Infinite";
 }
 :root {
-  --q-primary:  #ff913e;
+  --q-primary: #ff913e;
   user-select: none;
 }
 
 *::selection {
   background-color: var(--q-primary);
   color: beige;
-  
 }
 
 *::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+  width: 12px; /* width of the entire scrollbar */
 }
 
-*::-webkit-scrollbar-track  {
-  background: white;        /* color of the tracking area */
+*::-webkit-scrollbar-track {
+  background: white; /* color of the tracking area */
 }
 @media (prefers-color-scheme: dark) {
-*::-webkit-scrollbar-track {
-    background: black;        /* color of the tracking area */
+  *::-webkit-scrollbar-track {
+    background: black; /* color of the tracking area */
   }
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #ff913e;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid #ff913e;  /* creates padding around scroll thumb */
+  background-color: #ff913e; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #ff913e; /* creates padding around scroll thumb */
 }

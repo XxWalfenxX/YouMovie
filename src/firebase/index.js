@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "youmovie-10082",
   storageBucket: "youmovie-10082.appspot.com",
   messagingSenderId: "674100460556",
-  appId: "1:674100460556:web:58aa17e24a4917c01f0229"
+  appId: "1:674100460556:web:58aa17e24a4917c01f0229",
 };
 
 // Initialize Firebase
@@ -22,9 +22,9 @@ export const storage = getStorage(app);
 export const db = getFirestore(app);
 
 onAuthStateChanged(auth, (user) => {
- if (user) {
-  LocalStorage.set('user', user)
- } else {
-  LocalStorage.remove('user')
- }
+  if (user) {
+    LocalStorage.set("user", user);
+  } else {
+    LocalStorage.remove("user");
+  }
 });

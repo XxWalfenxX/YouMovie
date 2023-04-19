@@ -57,11 +57,13 @@
       <q-scroll-area style="height: 28rem; max-width: 100vw">
         <div class="q-pa-lg q-pa-lg-m row items-start scrolllateral">
           <TarjetaPeli
-            v-for="imagen in state.listaPelis.filter((peli) =>
-              peli.categorias.find(
-                (ca) => ca.id === state.peliData.categorias[0].id
+            v-for="imagen in state.listaPelis
+              .filter((peli) =>
+                peli.categorias.find(
+                  (ca) => ca.id === state.peliData.categorias[0].id
+                )
               )
-            ).slice(0, 6)"
+              .slice(0, 6)"
             :key="imagen.id"
             v-bind="imagen"
           />
@@ -73,7 +75,7 @@
 
 <script>
 import { reactive } from "vue";
-import { useRoute,useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import TarjetaPeli from "components/TarjetaPeli.vue";
 import getUnaPelicula from "src/firebase/ObtenerUnaPelicula";
 import { useQuasar } from "quasar";
@@ -124,7 +126,7 @@ export default {
     }
 
     return {
-      state
+      state,
     };
   },
 };

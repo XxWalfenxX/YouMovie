@@ -11,18 +11,18 @@ export default {
   name: "CargandoPeli",
   data() {
     return {
-      timerId: null
-    }
+      timerId: null,
+    };
   },
   created() {
     const router = useRouter();
     const idPeli = useRoute().params.id;
     this.timerId = setTimeout(() => {
-      router.push({ name: 'DescipcionPelicula', params: { idPeli }});
-    }, 0)
+      router.push({ name: "DescipcionPelicula", params: { idPeli } });
+    }, 0);
   },
   beforeUnmount() {
-    clearTimeout(this.timerId)
-  }
+    clearTimeout(this.timerId);
+  },
 };
 </script>

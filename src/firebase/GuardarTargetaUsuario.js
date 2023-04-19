@@ -9,7 +9,6 @@ export default async function GuardarPeliUsuario(ID, email) {
     const data = getUsuario.data();
     let pelisID = data.pelisID;
 
-    
     let result;
     if (pelisID.includes(ID)) {
       result = pelisID.filter((e) => e !== ID);
@@ -31,8 +30,8 @@ export const ListaPelis = async (email) => {
   const getUsuario = await getDoc(docRef);
   if (getUsuario.exists()) {
     const data = getUsuario.data();
-    return data
+    return data;
   } else {
     console.log("No such document!");
   }
-}
+};

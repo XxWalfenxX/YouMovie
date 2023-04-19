@@ -37,7 +37,7 @@
   </div>
 </template>
 <script>
-import EliminarID from "src/firebase/EliminarPelicula.js"
+import EliminarID from "src/firebase/EliminarPelicula.js";
 import { defineComponent, ref } from "vue";
 import { useQuasar } from "quasar";
 
@@ -52,7 +52,7 @@ export default defineComponent({
       eliminarPeli() {
         console.log(this.tmdb);
         if (this.tmdb !== null) {
-          EliminarID(this.tmdb)
+          EliminarID(this.tmdb);
         }
       },
     };

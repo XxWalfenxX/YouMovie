@@ -78,6 +78,7 @@
 import { ref, reactive } from "vue";
 import login from "src/firebase/firebase-login";
 import { useRouter } from "vue-router";
+import { LocalStorage } from "quasar";
 
 const user = reactive({
   email: null,
@@ -91,8 +92,11 @@ const submit = async () => {
   if (form.value.validate()) {
     try {
       await login(user);
+      console.log("cosa");
       router.push("/app");
-    } catch (err) {}
+    } catch (err) {
+      LocalStorage.remove("user");
+    }
   }
 };
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div>
     <q-form @submit="agregarPeli" class="centrado">
-      <div class="row flex-center " style="height: 100%;">
+      <div class="row flex-center" style="height: 100%">
         <div class="col-4 q-gutter-md">
-        <h4>Agregar pelicula</h4>
+          <h4>Agregar pelicula</h4>
           <q-input
             name="name"
             v-model="tmdb"
@@ -31,7 +31,7 @@ import AdminAuth from "src/firebase/AdminAuth";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
-import CollectionMovie from "src/tmdb/tmdb"
+import CollectionMovie from "src/tmdb/tmdb";
 
 export default defineComponent({
   name: "AgregarPeli",
@@ -50,19 +50,17 @@ export default defineComponent({
       tmdb: ref(null),
       synology: ref(null),
 
-      agregarPeli(evt){
+      agregarPeli(evt) {
         console.log(evt);
         CollectionMovie(evt.target[0].value, evt.target[2].value);
-      }
+      },
     };
   },
 });
 </script>
 
-
 <style>
 .centrado {
-    height: calc(100vh - 98px);
+  height: calc(100vh - 98px);
 }
-
 </style>

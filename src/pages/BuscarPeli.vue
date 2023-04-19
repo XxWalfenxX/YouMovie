@@ -29,7 +29,7 @@ export default defineComponent({
       listaPelis2: [],
     });
 
-    const search = ref("")
+    const search = ref("");
 
     getPeliculas.then((pelis) => {
       state.listaPelis = pelis;
@@ -40,7 +40,7 @@ export default defineComponent({
         state.listaPelis2 = "";
       } else {
         state.listaPelis2 = state.listaPelis.filter((peli) =>
-        peli.nombre.toLowerCase().includes(search.value.toLowerCase())
+          peli.nombre.toLowerCase().includes(search.value.toLowerCase())
         );
       }
     });

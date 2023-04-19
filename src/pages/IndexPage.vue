@@ -13,14 +13,13 @@
       transition-next="slide-left"
       @mouseenter="autoplay = false"
       @mouseleave="autoplay = true"
-
     >
       <q-carousel-slide
         v-for="(peli, index) in state.pelisCarrousel"
         :key="index"
         :name="index + 1"
         :img-src="peli.imagenFondo"
-        style="overflow: hidden;"
+        style="overflow: hidden"
       >
         <router-link
           :to="{ name: 'DescipcionPelicula', params: { id: peli.id } }"
@@ -66,9 +65,13 @@
         </div>
       </q-scroll-area>
     </div>
-    <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-            <q-btn fab icon="keyboard_arrow_up" color="primary" />
-          </q-page-scroller>
+    <q-page-scroller
+      position="bottom-right"
+      :scroll-offset="150"
+      :offset="[18, 18]"
+    >
+      <q-btn fab icon="keyboard_arrow_up" color="primary" />
+    </q-page-scroller>
   </div>
 </template>
 
@@ -101,12 +104,14 @@ export default defineComponent({
         "Ciencia ficción",
       ],
       listaPelis: [],
-      pelisCarrousel:[],
+      pelisCarrousel: [],
     });
 
     getPeliculas.then((pelis) => {
       state.listaPelis = pelis;
-      state.pelisCarrousel = [...pelis].sort(() => Math.random() - 0.5).slice(0, 5);
+      state.pelisCarrousel = [...pelis]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 5);
     });
 
     return {
@@ -147,7 +152,7 @@ h4 {
 }
 .custom-caption {
   height: 100%;
-  }
+}
 @media (max-width: 680px) {
   .contenedor-logo {
     display: flex;

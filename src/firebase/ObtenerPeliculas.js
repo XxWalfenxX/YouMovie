@@ -1,7 +1,6 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "src/firebase/index";
 
-
 const getPeliculas = new Promise(async (resolve, reject) => {
   const querySnapshot = await getDocs(collection(db, "peliculas"));
   let listaRadios = [];

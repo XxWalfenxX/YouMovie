@@ -34,8 +34,6 @@
               <q-form ref="form" class="q-gutter-md" @submit="submit">
                 <q-input v-model="user.email" label="Email" name="Email" />
 
-
-
                 <div>
                   <q-btn
                     class="full-width fredoka"
@@ -82,8 +80,8 @@ const router = useRouter();
 
 const submit = async () => {
   if (form.value.validate()) {
-    restablecerPass(user.email)
-    router.push("/")
+    restablecerPass(user.email);
+    router.push("/");
   }
 };
 </script>

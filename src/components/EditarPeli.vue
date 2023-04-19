@@ -1,9 +1,14 @@
 <template>
   <div class="q-pa-md">
     <div style="margin: 2em">
-      <q-input standout v-model="search" placeholder="Titulo o ID" :dense="dense" />
+      <q-input
+        standout
+        v-model="search"
+        placeholder="Titulo o ID"
+        :dense="dense"
+      />
     </div>
-    
+
     <q-table
       :rows="state.rows"
       :columns="columns"
@@ -14,11 +19,11 @@
       separator="cell"
       :filter="search"
     >
-    <template v-slot:top>
+      <template v-slot:top>
         <div class="text-h5">Lista de peliculas</div>
-        <q-space/>
+        <q-space />
         <q-btn label="Guardar cambios" @click="guardarCambios" />
-    </template>
+      </template>
       <template v-slot:body="props">
         <q-tr :props="props">
           <q-td key="id" :props="props">
@@ -64,7 +69,11 @@
 
           <q-td key="valoracion" :props="props">
             <div class="text-pre-wrap">{{ props.row.valoracion }}</div>
-            <q-popup-edit buttons v-model.number="props.row.valoracion" v-slot="scope">
+            <q-popup-edit
+              buttons
+              v-model.number="props.row.valoracion"
+              v-slot="scope"
+            >
               <q-input
                 type="number"
                 v-model.number="scope.value"
@@ -76,7 +85,11 @@
           </q-td>
           <q-td key="imagenFondo" :props="props">
             <div class="text-pre-wrap">{{ props.row.imagenFondo }}</div>
-            <q-popup-edit buttons v-model="props.row.imagenFondo" v-slot="scope">
+            <q-popup-edit
+              buttons
+              v-model="props.row.imagenFondo"
+              v-slot="scope"
+            >
               <q-input
                 v-model="scope.value"
                 dense
@@ -87,7 +100,11 @@
           </q-td>
           <q-td key="linkVideostation" :props="props">
             <div class="text-pre-wrap">{{ props.row.linkVideostation }}</div>
-            <q-popup-edit buttons v-model="props.row.linkVideostation" v-slot="scope">
+            <q-popup-edit
+              buttons
+              v-model="props.row.linkVideostation"
+              v-slot="scope"
+            >
               <q-input
                 v-model="scope.value"
                 dense
@@ -120,7 +137,6 @@
           </q-td>
         </q-tr>
       </template>
-      
     </q-table>
   </div>
 </template>
@@ -128,7 +144,7 @@
 <script>
 import { defineComponent, ref, reactive, watch } from "vue";
 import getPeliculas from "src/firebase/ObtenerPeliculas";
-import EditarDatos from "src/firebase/EditarPeliculas"
+import EditarDatos from "src/firebase/EditarPeliculas";
 
 const columns = [
   { name: "id", align: "left", label: "ID", field: "id", sortable: true },
@@ -193,16 +209,14 @@ export default defineComponent({
       state.rows = pelis;
     });
 
-
-
     return {
       state,
       columns,
       search,
       dense: ref(false),
       guardarCambios() {
-        console.dir(state.rows)
-        EditarDatos(state.rows)
+        console.dir(state.rows);
+        EditarDatos(state.rows);
       },
     };
   },

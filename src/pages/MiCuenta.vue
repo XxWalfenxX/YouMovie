@@ -75,24 +75,24 @@
       </div>
     </div>
     <q-dialog v-model="confirm" persistent>
-        <q-card>
-          <q-card-section class="row items-center">
-            <q-icon name="info" color="primary" size="3em"/>
-            <span class="q-ml-sm">¿Deseas eliminar tu cuenta para siempre?</span>
-          </q-card-section>
+      <q-card>
+        <q-card-section class="row items-center">
+          <q-icon name="info" color="primary" size="3em" />
+          <span class="q-ml-sm">¿Deseas eliminar tu cuenta para siempre?</span>
+        </q-card-section>
 
-          <q-card-actions align="right">
-            <q-btn flat label="Cancelar" v-close-popup />
-            <q-btn
-              flat
-              label="ELIMINAR"
-              color="primary"
-              v-close-popup
-              @click="eliminar()"
-            />
-          </q-card-actions>
-        </q-card>
-      </q-dialog>
+        <q-card-actions align="right">
+          <q-btn flat label="Cancelar" v-close-popup />
+          <q-btn
+            flat
+            label="ELIMINAR"
+            color="primary"
+            v-close-popup
+            @click="eliminar()"
+          />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 <script>
@@ -109,9 +109,6 @@ export default {
     const $q = useQuasar();
     const user = $q.localStorage.getItem("user");
     const router = useRouter();
-
-
-
 
     return {
       file: ref(null),

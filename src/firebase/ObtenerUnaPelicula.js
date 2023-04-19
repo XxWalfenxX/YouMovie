@@ -11,6 +11,6 @@ const getUnaPelicula = async (id) => {
     console.log("No such document!");
     return null;
   }
-}
+};
 
 export default getUnaPelicula;
