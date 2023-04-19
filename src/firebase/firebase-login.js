@@ -1,6 +1,6 @@
 import { auth } from "./index.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Loading, Notify } from "quasar";
+import { Loading, Notify, Dialog } from "quasar";
 import signOutUser from "./firebase-signout.js";
 const login = (data) => {
   return new Promise((resolve, reject) => {
@@ -11,6 +11,11 @@ const login = (data) => {
         if (userCredential.user.emailVerified == true) {
           resolve(userCredential.user);
         } else {
+          Dialog.create({
+            title: "Verificación de email",
+            message: "Por favor verifica tu correo electrónico",
+            ok: true
+           })
           signOutUser();
         }
       })

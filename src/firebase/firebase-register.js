@@ -1,6 +1,10 @@
 import { auth } from "./index.js";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { Loading, Notify } from "quasar";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification,
+} from "firebase/auth";
+import { Loading, Notify, Dialog } from "quasar";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "src/firebase/index";
 
@@ -16,6 +20,13 @@ const register = (data) => {
         setDoc(doc(db, "users", data.email), {
           admin: false,
           pelisID: [],
+        });
+        sendEmailVerification(userCredential.user).then(() => {
+          Dialog.create({
+            title: "Verificación de email",
+            message: "Se ha enviado un correo de verificación a" + data.email,
+            ok: true
+           })
         });
 
         Loading.hide();
