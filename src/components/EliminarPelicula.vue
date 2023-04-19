@@ -37,7 +37,7 @@
   </div>
 </template>
 <script>
-import EliminarID from "src/tmdb/EliminarID"
+import EliminarID from "src/firebase/EliminarPelicula.js"
 import { defineComponent, ref } from "vue";
 import { useQuasar } from "quasar";
 

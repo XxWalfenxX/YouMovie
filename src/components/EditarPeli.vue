@@ -3,6 +3,7 @@
     <div style="margin: 2em">
       <q-input standout v-model="search" placeholder="Titulo o ID" :dense="dense" />
     </div>
+    
     <q-table
       :rows="state.rows"
       :columns="columns"
@@ -13,6 +14,11 @@
       separator="cell"
       :filter="search"
     >
+    <template v-slot:top>
+        <div class="text-h5">Lista de peliculas</div>
+        <q-space/>
+        <q-btn label="Guardar cambios" @click="guardarCambios" />
+    </template>
       <template v-slot:body="props">
         <q-tr :props="props">
           <q-td key="id" :props="props">
@@ -125,6 +131,7 @@
           </q-td>
         </q-tr>
       </template>
+      
     </q-table>
   </div>
 </template>
@@ -132,6 +139,7 @@
 <script>
 import { defineComponent, ref, reactive, watch } from "vue";
 import getPeliculas from "src/firebase/ObtenerPeliculas";
+import EditarDatos from "src/firebase/EditarPeliculas"
 
 const columns = [
   { name: "id", align: "left", label: "ID", field: "id", sortable: true },
@@ -203,11 +211,17 @@ export default defineComponent({
       state.rows = pelis;
     });
 
+
+
     return {
       state,
       columns,
       search,
       dense: ref(false),
+      guardarCambios() {
+        console.dir(state.rows)
+        EditarDatos(state.rows)
+      },
     };
   },
 });
