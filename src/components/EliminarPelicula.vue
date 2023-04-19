@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-form @submit="eliminarPeli" class="centrado">
+    <q-form @submit="eliminarPeli" class="">
       <div class="row flex-center" style="height: 100%">
         <div class="col-4 q-gutter-md">
           <h4>Eliminar pelicula</h4>

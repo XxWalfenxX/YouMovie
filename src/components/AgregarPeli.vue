@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-form @submit="agregarPeli" class="centrado">
+    <q-form @submit="agregarPeli" class="">
       <div class="row flex-center " style="height: 100%;">
         <div class="col-4 q-gutter-md">
         <h4>Agregar pelicula</h4>
