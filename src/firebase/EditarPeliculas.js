@@ -1,21 +1,29 @@
 import { db } from "src/firebase/index";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, writeBatch } from "firebase/firestore";
 
 export default async function EditarDatos(pelis) {
-  //const batch = db.batch();
-  pelis.forEach(async (peli) => {
-    console.log(peli.nombre);
-    const washingtonRef = doc(db, "peliculas", peli.id);
-    await updateDoc(washingtonRef, {
-      id: parseInt(peli.id, 10),
+  const batch = writeBatch(db);
+
+  pelis.forEach((peli) => {
+    batch.update(doc(db, "peliculas", peli.id), {
+      id: peli.id,
       nombre: peli.nombre,
       descripcion: peli.descripcion,
       categorias: peli.categorias,
-      valoracion: parseInt(peli.valoracion, 10),
+      valoracion: peli.valoracion,
       poster: peli.poster,
       imagenFondo: peli.imagenFondo,
       logo: peli.logo,
       linkVideostation: peli.linkVideostation,
     });
   });
+
+  await batch
+    .commit()
+    .then(() => {
+      console.log("Documentos actualizados exitosamente");
+    })
+    .catch((error) => {
+      console.error("Error al actualizar documentos: ", error);
+    });
 }
