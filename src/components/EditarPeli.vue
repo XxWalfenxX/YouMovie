@@ -8,7 +8,7 @@
       :rows="state.rows"
       :columns="columns"
       title="Lista de peliculas"
-      :rows-per-page-options="[4, 10, 0]"
+      :rows-per-page-options="[5, 10, 0]"
       row-key="name"
       wrap-cells
       separator="cell"
@@ -118,6 +118,17 @@
               />
             </q-popup-edit>
           </q-td>
+          <q-td key="categorias" :props="props">
+            <div class="text-pre-wrap">{{ props.row.categorias }}</div>
+            <q-popup-edit buttons v-model="props.row.categorias" v-slot="scope">
+              <q-input
+                v-model="scope.value"
+                dense
+                autofocus
+                @keyup.enter="scope.set"
+              />
+            </q-popup-edit>
+          </q-td>
         </q-tr>
       </template>
       
@@ -177,6 +188,13 @@ const columns = [
     align: "left",
     label: "URL Poster",
     field: "poster",
+  },
+  {
+    name: "categorias",
+    align: "left",
+    style: "min-width: 45em; width: 60em",
+    label: "Categorias",
+    field: "categorias",
   },
 ];
 

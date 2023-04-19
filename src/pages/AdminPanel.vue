@@ -28,15 +28,15 @@
           transition-prev="jump-up"
           transition-next="jump-up"
         >
-          <q-tab-panel name="add" style="padding: 0;">
+          <q-tab-panel name="add">
             <AgregarPeli/>
           </q-tab-panel>
 
-          <q-tab-panel name="modify" style="padding: 0;">
+          <q-tab-panel name="modify">
             <EditarPeli/>
           </q-tab-panel>
 
-          <q-tab-panel name="remove" style="padding: 0;">
+          <q-tab-panel name="remove">
             <EliminarPelicula/>
           </q-tab-panel>
         </q-tab-panels>
@@ -71,7 +71,7 @@ export default defineComponent({
 </script>
 <style>
 .centrado {
-    height: 100vh - 98px;
+    height: calc(100vh - 98px);
 }
 
 </style>
