@@ -58,9 +58,9 @@
                       >
                     </div>
                     <div class="q-mt-sm">
-                      ¿Aún no tienes una cuenta?
+                      ¿Has olvidado tu contraseña?
                       <router-link class="text-primary" to="/reset-passwd"
-                        >Crear cuenta</router-link
+                        >Restablece tu contraseña</router-link
                       >
                     </div>
                   </div>
