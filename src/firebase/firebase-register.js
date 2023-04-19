@@ -7,6 +7,7 @@ import {
 import { Loading, Notify, Dialog } from "quasar";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "src/firebase/index";
+import signOutUser from "./firebase-signout.js";
 
 const register = (data) => {
   return new Promise((resolve, reject) => {
@@ -24,13 +25,11 @@ const register = (data) => {
         sendEmailVerification(userCredential.user).then(() => {
           Dialog.create({
             title: "Verificación de email",
-            message: "Se ha enviado un correo de verificación a" + data.email,
+            message: "Se ha enviado un correo de verificación a " + data.email,
             ok: true
            })
         });
-
-        Loading.hide();
-        resolve(userCredential.user);
+        signOutUser();
       })
       .catch((err) => {
         Loading.hide();
