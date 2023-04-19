@@ -9,6 +9,10 @@ const routes = [
         path: "register",
         component: () => import("src/pages/RegisterPage.vue"),
       },
+      {
+        path: "reset-passwd",
+        component: () => import("src/pages/ForgotPassword.vue"),
+      },
     ],
     meta: { auth: false },
   },

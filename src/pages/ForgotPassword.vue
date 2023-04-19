@@ -26,20 +26,13 @@
                   <div
                     class="text-h4 text-uppercase q-my-none text-weight-bold text-primary fredoka"
                   >
-                    Iniciar sesión
+                    Restablecer Contraseña
                   </div>
                 </div>
               </div>
 
               <q-form ref="form" class="q-gutter-md" @submit="submit">
                 <q-input v-model="user.email" label="Email" name="Email" />
-
-                <q-input
-                  v-model="user.password"
-                  label="Contraseña"
-                  name="password"
-                  type="password"
-                />
 
                 <div>
                   <q-btn
@@ -55,12 +48,6 @@
                       ¿Aún no tienes una cuenta?
                       <router-link class="text-primary" to="/register"
                         >Crear cuenta</router-link
-                      >
-                    </div>
-                    <div class="q-mt-sm">
-                      ¿Has olvidado tu contraseña?
-                      <router-link class="text-primary" to="/reset-passwd"
-                        >Restablece tu contraseña</router-link
                       >
                     </div>
                   </div>
@@ -81,7 +68,6 @@ import { useRouter } from "vue-router";
 
 const user = reactive({
   email: null,
-  password: null,
 });
 
 const form = ref(null);
