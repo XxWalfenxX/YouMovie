@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-md centrado">
     <div style="margin: 2em">
       <q-input
         standout
@@ -222,3 +222,10 @@ export default defineComponent({
   },
 });
 </script>
+
+
+<style>
+.centrado {
+  height: calc(100vh - 98px);
+}
+</style>
