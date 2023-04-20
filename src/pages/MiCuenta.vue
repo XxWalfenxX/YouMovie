@@ -4,30 +4,31 @@
       <div class="col-md-5 col-8">
         <h5>Actualizar información de tu cuenta</h5>
         <q-form @submit="cambiarNombre" class="q-gutter-md">
-          <p>Cambiar nombre de usuario</p>
-          <div class="flex items-center">
+
+          <div class="flex items-center" style="margin-bottom: 2em;">
             <q-input
               name="name"
               v-model="userName"
               label="Nombre"
               filled
               clearable
+              style="width: 30em;"
             >
             </q-input>
             <div class="q-ma-sm">
-              <q-btn v-if="userName !== null" label="Actualizar" type="submit" color="primary" />
+              <q-btn v-if="userName !== null && userName !== ''" label="Actualizar" type="submit" color="primary" />
             </div>
           </div>
         </q-form>
         <q-form @submit="cambiarPasswd" class="q-gutter-md">
-          <p>Cambiar contraseña</p>
-          <div class="flex items-center">
+          <div class="flex items-center" style="margin-bottom: 2em;">
             <q-input
               name="name"
               v-model="passwd"
               label="Contraseña"
               :type="isPwd ? 'password' : 'text'"
               filled
+              style="width: 30em;"
             >
               <template v-slot:append>
                 <q-icon
@@ -38,7 +39,7 @@
               </template>
             </q-input>
             <div class="q-ma-sm">
-              <q-btn v-if="passwd !== null" label="Actualizar" type="submit" color="primary" />
+              <q-btn v-if="passwd !== null && passwd !== ''" label="Actualizar" type="submit" color="primary" />
             </div>
           </div>
         </q-form>
@@ -47,7 +48,6 @@
           class="q-gutter-md"
           enctype="multipart/form-data"
         >
-          <p>Cambiar foto de perfil</p>
           <div class="flex items-center">
             <q-file
               name="poster_file"
@@ -57,14 +57,14 @@
               clearable
               label="Imagen"
               accept="image/*"
-              style="max-width: 300px"
+              style="width: 30em; max-width: 30em;"
             >
               <template v-slot:prepend>
                 <q-icon name="image" />
               </template>
             </q-file>
             <div class="q-ma-sm">
-              <q-btn v-if="file !== null" label="Actualizar" type="submit" color="primary" />
+              <q-btn v-if="file !== null && file !== ''" label="Actualizar" type="submit" color="primary" />
             </div>
           </div>
         </q-form>
