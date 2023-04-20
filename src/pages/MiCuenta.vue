@@ -28,6 +28,7 @@
               label="Contraseña"
               :type="isPwd ? 'password' : 'text'"
               filled
+              clearable
               style="width: 30em;"
             >
               <template v-slot:append>
