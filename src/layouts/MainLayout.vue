@@ -128,6 +128,12 @@ export default defineComponent({
       linksList: linksList,
     });
 
+    document.addEventListener("keydown", (e) => {
+      if (e.keyCode === 27) {
+        leftDrawerOpen.value = false
+      }
+    });
+
     const logout = () => {
       signout().then(() => {
         router.push("/login");
