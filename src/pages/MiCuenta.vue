@@ -68,6 +68,15 @@
             </div>
           </div>
         </q-form>
+        <div class="flex items-center" style="margin-top: 2em;">
+          <div class="text-body1">Modo Oscuro</div>
+          <q-toggle
+            color="blue"
+            v-model="darkMode"
+            @update:model-value="updateDarkMode"
+            val="dark-mode"
+          />
+        </div>
       </div>
       <div class="col-md-2 col-8">
         <h5>Gestionar tu cuenta</h5>
@@ -110,12 +119,29 @@ export default {
     const user = $q.localStorage.getItem("user");
     const router = useRouter();
 
+    let darkModeEnabled = false;
+    if ($q.localStorage.has("darkMode")) {
+      const darkModeStorage = $q.localStorage.getItem("darkMode");
+      darkModeEnabled = darkModeStorage;
+      $q.dark.set(darkModeEnabled);
+    } else {
+      $q.localStorage.set("darkMode", $q.dark.isActive);
+    }
+    const darkMode = ref(darkModeEnabled);
+
+    function updateDarkMode() {
+      $q.dark.set(darkMode.value);
+      $q.localStorage.set("darkMode", darkMode.value);
+    }
+
     return {
       file: ref(null),
       userName: ref(null),
       passwd: ref(null),
       confirm: ref(false),
       isPwd: ref(true),
+      darkMode,
+      updateDarkMode,
 
       reset() {
         this.file.value.resetValidation();
