@@ -21,7 +21,7 @@
         <q-route-tab to="/mi-lista" label="Mi Lista" />
       </q-tabs>
     </q-header>
-    <q-drawer v-model="leftDrawerOpen" side="left" overlay>
+    <q-drawer v-model="leftDrawerOpen" side="left" overlay :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
       <q-scroll-area
         style="
           height: calc(100% - 150px);
