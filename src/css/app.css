@@ -4,6 +4,10 @@
   src: url(./fonts/Infinite.woff);
 }
 
+body.body--dark {
+  background: #35363A;
+}
+
 .infinite {
   font-family: "Infinite";
 }
