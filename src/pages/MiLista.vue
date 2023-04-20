@@ -58,21 +58,6 @@ export default defineComponent({
 </script>
 
 <style>
-.alert-color {
-  --bs-alert-color: #052c65;
-  --bs-alert-bg: #cfe2ff;
-  --bs-alert-border-color: #9ec5fe;
-  --bs-alert-link-color: #052c65;
-}
-
-@media (prefers-color-scheme: dark) {
-  .alert-color {
-    --bs-alert-color: #6ea8fe;
-    --bs-alert-bg: #031633;
-    --bs-alert-border-color: #084298;
-    --bs-alert-link-color: #6ea8fe;
-  }
-}
 
 .alert {
   --bs-alert-padding-x: 1rem;

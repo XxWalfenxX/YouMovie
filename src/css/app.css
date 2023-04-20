@@ -4,8 +4,24 @@
   src: url(./fonts/Infinite.woff);
 }
 
+body.body--light {
+  --bs-alert-color: #052c65;
+  --bs-alert-bg: #cfe2ff;
+  --bs-alert-border-color: #9ec5fe;
+  --bs-alert-link-color: #052c65;
+  --sombra: 0 1px 14px 19px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
 body.body--dark {
   background: #35363A;
+  --bs-alert-color: #6ea8fe;
+  --bs-alert-bg: #031633;
+  --bs-alert-border-color: #084298;
+  --bs-alert-link-color: #6ea8fe;
+  --sombra: 0 1px 14px 19px rgba(255, 255, 255, 0.2),
+  0 2px 2px rgba(255, 255, 255, 0.14),
+  0 3px 1px -2px rgba(255, 255, 255, 0.12);
 }
 
 .infinite {
