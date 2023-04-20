@@ -39,7 +39,7 @@
 
       <q-img
         class="absolute-top"
-        src="https://cdn.quasar.dev/img/material.png"
+        src="~assets/bg-user.png"
         style="height: 150px"
       >
         <div class="absolute-bottom bg-transparent">
