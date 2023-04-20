@@ -15,7 +15,7 @@
             >
             </q-input>
             <div class="q-ma-sm">
-              <q-btn label="Cambiar" type="submit" color="primary" />
+              <q-btn v-if="userName !== null" label="Actualizar" type="submit" color="primary" />
             </div>
           </div>
         </q-form>
@@ -38,7 +38,7 @@
               </template>
             </q-input>
             <div class="q-ma-sm">
-              <q-btn label="Cambiar" type="submit" color="primary" />
+              <q-btn v-if="passwd !== null" label="Actualizar" type="submit" color="primary" />
             </div>
           </div>
         </q-form>
@@ -64,7 +64,7 @@
               </template>
             </q-file>
             <div class="q-ma-sm">
-              <q-btn label="Cambiar" type="submit" color="primary" />
+              <q-btn v-if="file !== null" label="Actualizar" type="submit" color="primary" />
             </div>
           </div>
         </q-form>
