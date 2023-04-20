@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "dotenv": "^16.0.3",
     "firebase": "^9.18.0",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",

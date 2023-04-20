@@ -1,12 +1,11 @@
-// https://api.themoviedb.org/3/movie/5559?api_key=2d890a918a8849421840dd697582ee3b&language=es-ES
 import { doc, setDoc } from "firebase/firestore";
 import { Notify } from "quasar";
 import { db } from "src/firebase/index";
 
 export default async function CollectionMovie(ID, linkSynology) {
-  const url = `https://api.themoviedb.org/3/movie/${ID}?api_key=2d890a918a8849421840dd697582ee3b&language=es-ES`;
-  const urlLogo = `https://api.themoviedb.org/3/movie/${ID}/images?api_key=2d890a918a8849421840dd697582ee3b&language=en`;
-  const urlLogo2 = `https://api.themoviedb.org/3/movie/${ID}/images?api_key=2d890a918a8849421840dd697582ee3b`;
+  const url = `https://api.themoviedb.org/3/movie/${ID}?api_key=${process.env.TMDB_API_KEY}&language=es-ES`;
+  const urlLogo = `https://api.themoviedb.org/3/movie/${ID}/images?api_key=${process.env.TMDB_API_KEY}&language=en`;
+  const urlLogo2 = `https://api.themoviedb.org/3/movie/${ID}/images?api_key=${process.env.TMDB_API_KEY}`;
   const res = await fetch(url);
   const resJson = await res.json();
   const resLogo = await fetch(urlLogo);
