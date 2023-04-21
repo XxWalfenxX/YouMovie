@@ -2,42 +2,48 @@
 
 Ver peliculas online
 
-## Install the dependencies
+## Instalar las dependencias
 
 ```bash
 yarn
-# or
+# o
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Configura las variables de entorno (API KEYS)
+```bash
+cp .env.dist .env
+```
+Edita el archivo .env y agrega las claves:
+- [TMDB](https://www.themoviedb.org/settings/api)
+### Inicie la aplicación en modo de desarrollo (recarga de código activo, informe de errores, etc.)
 
 ```bash
 quasar dev
 ```
 
-### Lint the files
+### Limpiar los archivos
 
 ```bash
 yarn lint
-# or
+# o
 npm run lint
 ```
 
-### Format the files
+### Formatear los archivos
 
 ```bash
 yarn format
-# or
+# o
 npm run format
 ```
 
-### Build the app for production
+### Crear la aplicación para producción
 
 ```bash
 quasar build
 ```
 
-### Customize the configuration
+### Personalizar la configuración
 
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Véase [Configuración quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
