@@ -12,10 +12,11 @@ export default defineComponent({
     $q.addressbarColor.set("#FF913E");
 
     function orientacionCambiada() {
-      if (typeof window.orientation === 'undefined') {
-        this.$globals.Orientacion = window.orientation;
+      if (typeof window.orientation !== 'undefined') {
+        alert(window.orientation);
+        this.$globals.Orientacion = "csoa";
       }
-      alert(window.orientation);
+      
     }
 
     window.addEventListener("orientationchange", orientacionCambiada, false);

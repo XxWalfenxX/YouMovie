@@ -32,9 +32,6 @@ import { LocalStorage } from "quasar";
 
 export default {
   name: "PeliculaView",
-  beforeCreate: function () {
-    console.log(this.$Orientacion);
-  },
   setup() {
     const $q = useQuasar();
     const idPeli = useRoute().params.id;
