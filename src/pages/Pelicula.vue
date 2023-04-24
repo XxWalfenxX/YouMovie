@@ -7,15 +7,18 @@
       icon="close"
       href="javascript:history.back()"
     />
-    <div class="video">
-      <iframe
+    <div>{{ this.$globals.Orientacion }}</div>
+    <div
+      class="video"
+    >
+      <!--<iframe
         width="100%"
         height="100%"
         style="border-radius: 5px"
         :src="state.peliData.linkVideostation"
         frameborder="0"
         allowfullscreen
-      />
+      />-->
     </div>
   </q-page>
 </template>
@@ -29,6 +32,9 @@ import { LocalStorage } from "quasar";
 
 export default {
   name: "PeliculaView",
+  beforeCreate: function () {
+    console.log(this.$Orientacion);
+  },
   setup() {
     const $q = useQuasar();
     const idPeli = useRoute().params.id;
