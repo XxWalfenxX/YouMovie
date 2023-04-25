@@ -13,11 +13,8 @@ export default async function GuardarPeliUsuario(ID, email) {
     // Verifica si la película ya está en la lista del usuario.
     // Si lo está, la elimina de la lista.
     // Si no está en la lista, la agrega a la lista.
-    let result;
-    if (pelisID.includes(ID)) {
-      result = pelisID.filter((e) => e !== ID);
-    } else {
-      result = pelisID.filter((e) => e !== ID);
+    let result = pelisID.filter((e) => e !== ID);
+    if (!pelisID.includes(ID)) {
       result.push(ID);
     }
 
