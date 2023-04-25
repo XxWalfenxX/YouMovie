@@ -1,5 +1,6 @@
 <template>
-  <q-page padding>
+  <q-page padding style="overflow: hidden;">
+    <div class="spinner"><q-spinner color="primary" size="10em" /></div>
     <q-btn
       class="btn"
       round
@@ -64,10 +65,33 @@ export default {
   height: calc(100vh - (115px + 16px + 16px));
 }
 
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+  .video {
+    position: absolute;
+    width: calc(100vh - 115px);
+    height: 100vw;
+    transform: rotate(90deg);
+    transform-origin: top left;
+    left: 100%;
+  } 
+}
+
+.spinner {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - (115px + 16px + 16px));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  
+}
+
 .btn {
   position: absolute;
   float: right;
   right: 3em;
   top: 3em;
+  z-index: 999;
 }
 </style>
