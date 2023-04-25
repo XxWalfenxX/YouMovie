@@ -8,6 +8,7 @@ import { Loading, Notify, Dialog } from "quasar";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "src/firebase/index";
 import signOutUser from "./firebase-signout.js";
+import { errorMSG } from "./StringsFirebase.js";
 
 const register = (data) => {
   return new Promise((resolve, reject) => {
@@ -33,9 +34,10 @@ const register = (data) => {
       })
       .catch((err) => {
         Loading.hide();
+        console.log(err.code);
         Notify.create({
           type: "negative",
-          message: err.message,
+          message: errorMSG(err.code),
         });
         reject(err.message);
       });

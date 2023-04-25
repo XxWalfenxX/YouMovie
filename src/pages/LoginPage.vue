@@ -45,7 +45,7 @@
                   <q-btn
                     class="full-width fredoka"
                     color="primary"
-                    label="Login"
+                    label="Iniciar Sesión"
                     rounded
                     type="submit"
                   ></q-btn>

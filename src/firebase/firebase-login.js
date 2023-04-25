@@ -2,6 +2,8 @@ import { auth } from "./index.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Loading, Notify, Dialog } from "quasar";
 import signOutUser from "./firebase-signout.js";
+import { errorMSG } from "./StringsFirebase.js";
+
 const login = (data) => {
   return new Promise((resolve, reject) => {
     Loading.show();
@@ -23,7 +25,7 @@ const login = (data) => {
         Loading.hide();
         Notify.create({
           type: "negative",
-          message: err.message,
+          message: errorMSG(err.code) ,
         });
         reject(err.message);
       });

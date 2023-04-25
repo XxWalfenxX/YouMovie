@@ -49,7 +49,7 @@
                   <q-btn
                     class="full-width fredoka"
                     color="primary"
-                    label="Register"
+                    label="Crear Cuenta"
                     rounded
                     type="submit"
                   ></q-btn>
