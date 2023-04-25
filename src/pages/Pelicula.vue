@@ -7,18 +7,15 @@
       icon="close"
       href="javascript:history.back()"
     />
-    <div>{{ this.$globals.Orientacion }}</div>
-    <div
-      class="video"
-    >
-      <!--<iframe
+    <div class="video">
+      <iframe
         width="100%"
         height="100%"
         style="border-radius: 5px"
         :src="state.peliData.linkVideostation"
         frameborder="0"
         allowfullscreen
-      />-->
+      />
     </div>
   </q-page>
 </template>
