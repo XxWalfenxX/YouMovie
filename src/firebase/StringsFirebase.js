@@ -1,4 +1,5 @@
 export function errorMSG(mensaje) {
+  // La función toma un mensaje de error como argumento y devuelve un mensaje personalizado en función del código de error.
   switch (mensaje) {
     case "auth/email-already-in-use":
       return "Este correo ya está en uso";
@@ -17,6 +18,7 @@ export function errorMSG(mensaje) {
     case "auth/missing-email":
       return "Introduce un correo electrónico"
     default:
+      // Si el mensaje no coincide con ninguno de los casos anteriores, devuelve el mensaje sin cambios.
       return mensaje;
   }
 }
