@@ -73,7 +73,11 @@ export default {
     transform: rotate(90deg);
     transform-origin: top left;
     left: 100%;
-  } 
+  }
+
+  iframe {
+    padding: 1em;
+  }
 }
 
 .spinner {
