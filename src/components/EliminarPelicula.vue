@@ -2,7 +2,7 @@
   <div>
     <q-form @submit="eliminarPeli" class="centrado">
       <div class="row flex-center" style="height: 100%">
-        <div class="col-4 q-gutter-md">
+        <div class="col col-md-4 q-gutter-md">
           <h4>Eliminar pelicula</h4>
           <q-input
             name="name"
