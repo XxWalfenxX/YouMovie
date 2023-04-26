@@ -42,7 +42,7 @@
               font-size="12px"
               :value="state.valoracion"
               size="50px"
-              thickness="0.22"
+              :thickness="0.22"
               color="teal"
               track-color="grey-3"
               class="q-ma-md"
