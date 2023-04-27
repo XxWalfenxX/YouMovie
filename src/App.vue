@@ -1,6 +1,7 @@
 <template>
   <router-view />
   <q-banner
+  id="cookie-banner"
     style="position: fixed; bottom: 0; width: 100%"
     dense
     :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'"
@@ -32,7 +33,8 @@ export default defineComponent({
     }
 
     function aceptarCookie(e) {
-      e.target.parentNode.parentElement.parentElement.parentElement.style.display = "none"
+      const cookieBanner = document.getElementById("cookie-banner")
+      cookieBanner.style.display = "none"
       $q.localStorage.set("cookie", true);
     }
     $q.addressbarColor.set("#FF913E");
