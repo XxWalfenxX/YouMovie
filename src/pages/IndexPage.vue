@@ -127,7 +127,7 @@ export default defineComponent({
         .slice(0, 5);
     });
 
-    // Retornamos las propiedades reactivas y las referencias necesarias
+    // Devolvemos las propiedades reactivas y las referencias necesarias
     return {
       state,
       slide: ref(1),

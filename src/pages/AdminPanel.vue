@@ -64,14 +64,17 @@
 </template>
 
 <script>
+// Importamos los componentes y métodos necesarios desde Vue
 import { defineComponent, ref } from "vue";
 import AgregarPeli from "src/components/AgregarPeli.vue";
 import EliminarPelicula from "src/components/EliminarPelicula.vue";
 import EditarPeli from "src/components/EditarPeli.vue";
 
 export default defineComponent({
+  // Establecemos el nombre del componente
   name: "AdminPanel",
 
+  // Importamos los componentes definidos anteriormente
   components: {
     AgregarPeli,
     EliminarPelicula,
@@ -79,6 +82,7 @@ export default defineComponent({
   },
 
   setup() {
+    // Definimos una función que verifica si el dispositivo es un móvil
     window.mobileCheck = function () {
       let check = false;
       (function (a) {
@@ -95,6 +99,7 @@ export default defineComponent({
       return check;
     };
 
+    // Devolvemos las referencias necesarias
     return {
       tab: ref("add"),
       splitterModel: ref(200),
