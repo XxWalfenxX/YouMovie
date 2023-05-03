@@ -1,15 +1,15 @@
 <template>
-  <div v-if="!movil">
-    <q-splitter v-model="splitterModel" class="centrado" disable unit="px">
-      <template v-slot:before>
-        <q-tabs v-model="tab" vertical class="text-primary">
-          <q-tab name="add" icon="add" label="Agregar Pelicula" />
-          <q-tab name="modify" icon="edit" label="Modificar Pelicula" />
-          <q-tab name="remove" icon="remove" label="Eliminar Pelicula" />
+  <div v-if="!movil"> <!-- Si no es un dispositivo móvil -->
+    <q-splitter v-model="splitterModel" class="centrado" disable unit="px"> <!-- División de pantalla -->
+      <template v-slot:before> <!-- Slot antes del splitter -->
+        <q-tabs v-model="tab" vertical class="text-primary"> <!-- Pestañas verticales -->
+          <q-tab name="add" icon="add" label="Agregar Pelicula" /> <!-- Pestaña para agregar película -->
+          <q-tab name="modify" icon="edit" label="Modificar Pelicula" /> <!-- Pestaña para modificar película -->
+          <q-tab name="remove" icon="remove" label="Eliminar Pelicula" /> <!-- Pestaña para eliminar película -->
         </q-tabs>
       </template>
 
-      <template v-slot:after>
+      <template v-slot:after> <!-- Slot después del splitter -->
         <q-tab-panels
           v-model="tab"
           animated
@@ -17,23 +17,23 @@
           vertical
           transition-prev="jump-up"
           transition-next="jump-up"
-        >
+        > <!-- Paneles para cada pestaña -->
           <q-tab-panel name="add" style="padding: 0">
-            <AgregarPeli />
+            <AgregarPeli /> <!-- Componente para agregar película -->
           </q-tab-panel>
 
           <q-tab-panel name="modify" style="padding: 0">
-            <EditarPeli />
+            <EditarPeli /> <!-- Componente para modificar película -->
           </q-tab-panel>
 
           <q-tab-panel name="remove" style="padding: 0">
-            <EliminarPelicula />
+            <EliminarPelicula /> <!-- Componente para eliminar película -->
           </q-tab-panel>
         </q-tab-panels>
       </template>
     </q-splitter>
   </div>
-  <div v-else>
+  <div v-else> <!-- Si es un dispositivo móvil -->
     <q-tabs
       v-model="tab"
       dense
@@ -42,22 +42,22 @@
       indicator-color="primary"
       align="justify"
       narrow-indicator
-    >
-      <q-tab name="add" icon="add" label="Agregar Pelicula" />
-      <q-tab name="modify" icon="edit" label="Modificar Pelicula" />
-      <q-tab name="remove" icon="remove" label="Eliminar Pelicula" />
+    > <!-- Pestañas horizontales -->
+      <q-tab name="add" icon="add" label="Agregar Pelicula" /> <!-- Pestaña para agregar película -->
+      <q-tab name="modify" icon="edit" label="Modificar Pelicula" /> <!-- Pestaña para modificar película -->
+      <q-tab name="remove" icon="remove" label="Eliminar Pelicula" /> <!-- Pestaña para eliminar película -->
     </q-tabs>
-    <q-tab-panels v-model="tab" animated>
+    <q-tab-panels v-model="tab" animated> <!-- Paneles para cada pestaña -->
       <q-tab-panel name="add">
-        <AgregarPeli />
+        <AgregarPeli /> <!-- Componente para agregar película -->
       </q-tab-panel>
 
       <q-tab-panel name="modify">
-        <EditarPeli />
+        <EditarPeli /> <!-- Componente para modificar película -->
       </q-tab-panel>
 
       <q-tab-panel name="remove">
-        <EliminarPelicula />
+        <EliminarPelicula /> <!-- Componente para eliminar película -->
       </q-tab-panel>
     </q-tab-panels>
   </div>
