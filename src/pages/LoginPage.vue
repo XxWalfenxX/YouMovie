@@ -10,7 +10,7 @@
               class="text-h4 text-uppercase text-white fredoka"
               style="min-width: 220px"
             >
-              <q-img src="~assets/YouMovieLogoWhite.svg"></q-img>
+              <q-img src="~assets/YouMovieLogoWhite.svg" ></q-img>
             </div>
             <div class="text-white q-my-sm text-h5 text-center infinite">YouMovie</div>
           </div>
@@ -103,6 +103,10 @@ const submit = async () => {
 <style>
 .sombra {
   box-shadow: var(--sombra)
+}
+
+div.q-img__container.absolute-full {
+  overflow: hidden;
 }
 
 </style>

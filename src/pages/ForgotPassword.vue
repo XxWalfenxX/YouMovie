@@ -89,4 +89,8 @@ const submit = async () => {
 .sombra {
   box-shadow: var(--sombra);
 }
+div.q-img__container.absolute-full {
+  overflow: hidden;
+}
+
 </style>
