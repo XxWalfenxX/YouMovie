@@ -1,6 +1,8 @@
 <template>
   <q-page padding style="overflow: hidden;">
+    <!-- Spinner de carga -->
     <div class="spinner"><q-spinner color="primary" size="10em" /></div>
+    <!-- Botón de cerrar que retrocede en la historia del navegador -->
     <q-btn
       class="btn"
       round
@@ -8,6 +10,8 @@
       icon="close"
       href="javascript:history.back()"
     />
+
+    <!-- Contenedor del video -->
     <div class="video">
       <iframe
         width="100%"
@@ -32,12 +36,19 @@ export default {
   name: "PeliculaView",
   setup() {
     const $q = useQuasar();
+
+    // Obtiene el id de la película de la ruta actual
     const idPeli = useRoute().params.id;
+
+    // Estado reactivo de los datos de la película
     const state = reactive({
       peliData: [],
     });
 
+    // Obtiene la última película vista en el almacenamiento local
     const peliActual = $q.localStorage.getItem("peliActual");
+
+    // Si la última película vista no es la misma que la actual, se obtiene la información de la película de la base de datos
     if (peliActual.id != idPeli || peliActual == null) {
       console.log("Ha pedido info a db");
       getUnaPelicula(idPeli)
@@ -49,6 +60,7 @@ export default {
           console.error(error);
         });
     } else {
+      // Si la última película vista es la misma que la actual, se utiliza la información del almacenamiento local
       console.log("NO pedido info a db");
       state.peliData = peliActual;
     }
@@ -88,7 +100,6 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: -1;
-  
 }
 
 .btn {
