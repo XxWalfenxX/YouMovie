@@ -12,7 +12,7 @@
             >
               <q-img src="~assets/YouMovieLogoWhite.svg"></q-img>
             </div>
-            <div class="text-white q-my-sm text-h5 text-center">YouMovie</div>
+            <div class="text-white q-my-sm text-h5 text-center infinite">YouMovie</div>
           </div>
         </div>
       </div>
