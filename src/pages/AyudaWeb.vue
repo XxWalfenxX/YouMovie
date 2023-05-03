@@ -1,7 +1,11 @@
 <template>
+  <!-- contenedor principal de la sección de ayuda -->
   <div class="q-pa-md">
+    <!-- título de la sección -->
     <h3>Ayuda</h3>
+    <!-- lista de preguntas y respuestas -->
     <q-list bordered class="rounded-borders">
+      <!-- primer pregunta y respuesta desplegable -->
       <q-expansion-item expand-separator label="¿Qué es YouMovie?">
         <q-card>
           <q-card-section>
@@ -11,6 +15,7 @@
         </q-card>
       </q-expansion-item>
 
+      <!-- segunda pregunta y respuesta desplegable -->
       <q-expansion-item expand-separator label="¿Cómo cambio mi contraseña?">
         <q-card>
           <q-card-section>
@@ -24,6 +29,8 @@
           </q-card-section>
         </q-card>
       </q-expansion-item>
+
+      <!-- tercera pregunta y respuesta desplegable -->
       <q-expansion-item
         expand-separator
         label="¿Es necesario una conexión de alta velocidad para reproducir una pelicula?"
