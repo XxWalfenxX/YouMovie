@@ -1,8 +1,10 @@
 <template>
+  <!-- El componente tiene dos secciones, dependiendo de si el usuario tiene películas guardadas o no -->
   <div
     class="q-pa-lg row justify-center q-gutter-md"
     v-if="state.listaPelis.length !== 0"
   >
+    <!-- Se utiliza un bucle for para mostrar cada tarjeta de película en la lista del usuario -->
     <TarjetaPeli
       v-for="imagen in state.listaPelis2.filter((peli) =>
         state.listaPelis.includes(peli.id)
@@ -12,6 +14,7 @@
     />
   </div>
   <div class="q-pa-lg row justify-center q-gutter-md" v-else>
+    <!-- Si el usuario no tiene películas guardadas, se muestra un mensaje de alerta -->
     <h3 class="alert alert-color">
       No tienes ninguna película guardada, agrega una pulsando en
       <q-icon name="bookmark" color="teal" />
@@ -37,15 +40,18 @@ export default defineComponent({
     const $q = useQuasar();
     const user = $q.localStorage.getItem("user");
 
+    // Utilizamos el estado reactivo para guardar la lista de películas del usuario y la lista completa de películas
     const state = reactive({
       listaPelis: [],
       listaPelis2: [],
     });
 
+    // Llamamos a una función externa para obtener la lista de películas del usuario
     ListaPelis(user.email).then((v) => {
       state.listaPelis = v.pelisID;
     });
 
+    // Llamamos a una función externa para obtener la lista completa de películas
     getPeliculas.then((pelis) => {
       state.listaPelis2 = pelis;
     });
@@ -58,7 +64,7 @@ export default defineComponent({
 </script>
 
 <style>
-
+/* Estilo CSS para la sección de alerta */
 .alert {
   --bs-alert-padding-x: 1rem;
   --bs-alert-padding-y: 1rem;

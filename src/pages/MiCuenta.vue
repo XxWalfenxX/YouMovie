@@ -1,27 +1,33 @@
 <template>
+  <!-- Contenedor principal -->
   <div class="q-pa-md">
+    <!-- Sección para actualizar nombre, contraseña e imagen de perfil -->
     <div class="row justify-center">
       <div class="col-md-5 col-8">
         <h5>Actualizar información de tu cuenta</h5>
         <q-form @submit="cambiarNombre" class="q-gutter-md">
-
-          <div class="flex items-center" style="margin-bottom: 2em;">
+          <div class="flex items-center" style="margin-bottom: 2em">
             <q-input
               name="name"
               v-model="userName"
               label="Nombre"
               filled
               clearable
-              style="width: 30em;"
+              style="width: 30em"
             >
             </q-input>
             <div class="q-ma-sm">
-              <q-btn v-if="userName !== null && userName !== ''" label="Actualizar" type="submit" color="primary" />
+              <q-btn
+                v-if="userName !== null && userName !== ''"
+                label="Actualizar"
+                type="submit"
+                color="primary"
+              />
             </div>
           </div>
         </q-form>
         <q-form @submit="cambiarPasswd" class="q-gutter-md">
-          <div class="flex items-center" style="margin-bottom: 2em;">
+          <div class="flex items-center" style="margin-bottom: 2em">
             <q-input
               name="name"
               v-model="passwd"
@@ -29,7 +35,7 @@
               :type="isPwd ? 'password' : 'text'"
               filled
               clearable
-              style="width: 30em;"
+              style="width: 30em"
             >
               <template v-slot:append>
                 <q-icon
@@ -40,7 +46,12 @@
               </template>
             </q-input>
             <div class="q-ma-sm">
-              <q-btn v-if="passwd !== null && passwd !== ''" label="Actualizar" type="submit" color="primary" />
+              <q-btn
+                v-if="passwd !== null && passwd !== ''"
+                label="Actualizar"
+                type="submit"
+                color="primary"
+              />
             </div>
           </div>
         </q-form>
@@ -58,18 +69,23 @@
               clearable
               label="Imagen"
               accept="image/*"
-              style="width: 30em; max-width: 30em;"
+              style="width: 30em; max-width: 30em"
             >
               <template v-slot:prepend>
                 <q-icon name="image" />
               </template>
             </q-file>
             <div class="q-ma-sm">
-              <q-btn v-if="file !== null && file !== ''" label="Actualizar" type="submit" color="primary" />
+              <q-btn
+                v-if="file !== null && file !== ''"
+                label="Actualizar"
+                type="submit"
+                color="primary"
+              />
             </div>
           </div>
         </q-form>
-        <div class="flex items-center" style="margin-top: 2em;">
+        <div class="flex items-center" style="margin-top: 2em">
           <div class="text-body1">Modo Oscuro</div>
           <q-toggle
             color="blue"
@@ -79,6 +95,7 @@
           />
         </div>
       </div>
+      <!-- Sección para eliminar cuenta -->
       <div class="col-md-2 col-8">
         <h5>Gestionar tu cuenta</h5>
         <q-btn color="red" @click="confirm = true">ELIMINAR CUENTA</q-btn>
@@ -120,6 +137,8 @@ export default {
     const user = $q.localStorage.getItem("user");
     const router = useRouter();
 
+    // Comprueba si se ha establecido una preferencia de modo oscuro en el almacenamiento local
+    // Si es así, lo usa; de lo contrario, establece la preferencia predeterminada actual y la guarda en el almacenamiento local
     let darkModeEnabled = $q.dark.isActive;
     if ($q.localStorage.has("darkMode")) {
       const darkModeStorage = $q.localStorage.getItem("darkMode");
@@ -130,6 +149,7 @@ export default {
     }
     const darkMode = ref(darkModeEnabled);
 
+    // Actualiza el modo oscuro cuando el usuario lo cambia
     function updateDarkMode() {
       $q.dark.set(darkMode.value);
       $q.localStorage.set("darkMode", darkMode.value);
@@ -144,22 +164,28 @@ export default {
       darkMode,
       updateDarkMode,
 
+      // Función que reinicia las validaciones del formulario
       reset() {
         this.file.value.resetValidation();
         this.userName.value.resetValidation();
       },
 
+      // Función que actualiza la imagen de perfil del usuario
       cambiarImagen(evt) {
         cambiarImagenCuenta(evt, user);
       },
 
+      // Función que actualiza el nombre de usuario del usuario
       cambiarNombre(evt) {
         cambiarNombreUsuario(evt.target[0].value);
       },
 
+      // Función que actualiza la contraseña del usuario
       cambiarPasswd(evt) {
         actualizarPasswd(evt.target[0].value);
       },
+
+      // Función que elimina la cuenta del usuario actual
       eliminar() {
         if (EliminarUsuario(user.email)) {
           LocalStorage.remove("user");

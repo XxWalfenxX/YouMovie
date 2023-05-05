@@ -1,5 +1,6 @@
 <template>
   <q-layout view="hhh lpR fFf">
+    <!-- Encabezado -->
     <q-header class="bg-primary text-white" height-hint="98">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
@@ -21,14 +22,23 @@
         <q-route-tab to="/mi-lista" label="Mi Lista" />
       </q-tabs>
     </q-header>
-    <q-drawer v-model="leftDrawerOpen" side="left" overlay :class="$q.dark.isActive ? 'bg-dark' : 'bg-grey-3'">
+
+    <!-- Cajón izquierdo -->
+    <q-drawer
+      v-model="leftDrawerOpen"
+      side="left"
+      overlay
+      :class="$q.dark.isActive ? 'bg-dark' : 'bg-grey-3'"
+    >
       <q-scroll-area
-        style="height: calc(100% - 150px);
+        style="
+          height: calc(100% - 150px);
           margin-top: 150px;
           border-right: 1px solid #ddd;
         "
       >
         <q-list padding>
+          <!-- Renderiza los enlaces esenciales -->
           <EssentialLink
             v-for="link in essentialLinks"
             :key="link.title"
@@ -52,8 +62,10 @@
       </q-img>
     </q-drawer>
 
+    <!-- Contenido principal -->
     <q-page-container>
       <q-dialog v-model="confirm" persistent>
+        <!-- Dialogo de confirmación para cerrar sesión -->
         <q-card>
           <q-card-section class="row items-center">
             <q-icon name="info" color="primary" size="3em" />
@@ -72,6 +84,7 @@
           </q-card-actions>
         </q-card>
       </q-dialog>
+      <!-- Renderiza el componente asociado a la ruta actual -->
       <router-view />
     </q-page-container>
   </q-layout>
@@ -105,12 +118,6 @@ const linksList = [
 
 const router = useRouter();
 
-const logout = () => {
-  signout().then(() => {
-    router.push("/login");
-  });
-};
-
 export default defineComponent({
   name: "MainLayout",
 
@@ -128,18 +135,14 @@ export default defineComponent({
       linksList: linksList,
     });
 
+    // Escuchar eventos del teclado
     document.addEventListener("keydown", (e) => {
       if (e.keyCode === 27) {
-        leftDrawerOpen.value = false
+        leftDrawerOpen.value = false;
       }
     });
 
-    const logout = () => {
-      signout().then(() => {
-        router.push("/login");
-      });
-    };
-
+    // Verificar si el usuario es administrador
     state.admin = AdminAuth(user.email).then((v) => {
       if (v == true) {
         linksList.push({
@@ -150,8 +153,16 @@ export default defineComponent({
       }
     });
 
+    // Función para cerrar sesión
+    const logout = () => {
+      signout().then(() => {
+        router.push("/login");
+      });
+    };
+
     let linkIMG = user.photoURL;
 
+    // Retornar variables y funciones para ser usadas en el template
     return {
       avatar: linkIMG,
       name: user.displayName,

@@ -1,16 +1,17 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-page-container class="pt-0-important">
-      <q-page>
-        <div class="row" style="height: 100vh">
-          <div class="col-12 flex content-center justify-center">
-            <router-view />
+  <q-layout view="lHh Lpr lFf"> <!-- Definimos el diseño de la página -->
+    <q-page-container class="pt-0-important"> <!-- Creamos el contenedor de la página -->
+      <q-page> <!-- Agregamos una página -->
+        <div class="row" style="height: 100vh"> <!-- Agregamos una fila con una altura del 100% de la pantalla -->
+          <div class="col-12 flex content-center justify-center"> <!-- Agregamos una columna con ancho de 12 y centrada en el contenido -->
+            <router-view /> <!-- Agregamos la vista del router -->
           </div>
         </div>
       </q-page>
     </q-page-container>
   </q-layout>
 </template>
+
 
 <style scoped>
 .wave {

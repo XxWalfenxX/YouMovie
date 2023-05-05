@@ -1,6 +1,8 @@
 <template>
+  <!-- Este es el componente principal de la tarjeta que envuelve el formulario -->
   <q-card class="q-ma-xl sombra">
     <div class="row">
+      <!-- Este div es una columna que muestra un fondo azul solo en pantallas de escritorio -->
       <div class="col-0 col-sm-5 bg-primary rounded-left-borders xs-hide">
         <div
           class="row full-width q-px-xl q-pb-xl full-height flex flex-center"
@@ -10,6 +12,7 @@
               class="text-h4 text-uppercase text-white fredoka"
               style="min-width: 220px"
             >
+              <!-- Logo de YouMovie -->
               <q-img src="~assets/YouMovieLogoWhite.svg"></q-img>
             </div>
             <div class="text-white q-my-sm text-h5 text-center infinite">YouMovie</div>
@@ -17,6 +20,7 @@
         </div>
       </div>
 
+      <!-- Este div es una columna que ocupa el resto del ancho en todas las pantallas -->
       <div class="col-12 col-sm-7">
         <div class="row q-pa-sm-sm q-pa-md">
           <div class="col-12">
@@ -26,15 +30,18 @@
                   <div
                     class="text-h4 text-uppercase q-my-none text-weight-bold text-primary fredoka"
                   >
+                    <!-- Título de la sección de restablecimiento de contraseña -->
                     Restablecer Contraseña
                   </div>
                 </div>
               </div>
 
+              <!-- Formulario de restablecimiento de contraseña -->
               <q-form ref="form" class="q-gutter-md" @submit="submit">
                 <q-input v-model="user.email" label="Email" name="Email" />
 
                 <div>
+                  <!-- Botón para enviar el formulario -->
                   <q-btn
                     class="full-width fredoka"
                     color="primary"
@@ -46,11 +53,13 @@
                   <div class="q-mt-lg">
                     <div class="q-mt-sm">
                       ¿Aún no tienes una cuenta?
+                      <!-- Enlace para ir a la página de registro -->
                       <router-link class="text-primary" to="/register"
                         >Crear cuenta</router-link
                       >
                     </div>
                     <div class="q-mt-sm">
+                      <!-- Enlace para ir a la página de inicio de sesión -->
                       <router-link class="text-primary" to="/"
                         >Iniciar Sesión</router-link
                       >
@@ -80,11 +89,14 @@ const router = useRouter();
 
 const submit = async () => {
   if (form.value.validate()) {
+    // Función para enviar el correo de recuperación de contraseña
     restablecerPass(user.email);
+    // Redireccionar al usuario a la página de inicio de sesión
     router.push("/");
   }
 };
 </script>
+
 <style>
 .sombra {
   box-shadow: var(--sombra);

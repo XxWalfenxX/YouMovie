@@ -1,5 +1,6 @@
 <template>
   <q-card class="my-card">
+    <!-- Botón para abrir un enlace o redirigir a una ruta según la prop 'reload' -->
     <q-btn
       v-ripple
       class="btn-card cursor-pointer q-hoverable img-hover"
@@ -11,6 +12,7 @@
       <img class="cartelera-img" :src="poster" />
     </q-btn>
 
+    <!-- Botones de acción para guardar la tarjeta y compartir el enlace -->
     <q-card-actions align="left">
       <q-btn flat round color="teal" icon="bookmark" @click="GuardarLista" />
       <q-btn
@@ -43,15 +45,15 @@ export default defineComponent({
     imagenFondo: String,
     logo: String,
     linkVideostation: String,
-    reload: Boolean,
+    reload: Boolean, // Propiedad para determinar si el botón de acción debe redirigir a una nueva página o abrir un enlace
   },
 
   setup(props) {
     const $q = useQuasar();
-    const user = $q.localStorage.getItem("user");
+    const user = $q.localStorage.getItem("user"); // Obtiene el usuario de LocalStorage
 
     function GuardarLista() {
-      GuardarTargetaUsuario(props.id, user.email);
+      GuardarTargetaUsuario(props.id, user.email); // Llama a una función para guardar la tarjeta en la lista del usuario actual
     }
 
     function linkClick(e, go) {
@@ -66,23 +68,25 @@ export default defineComponent({
         logo: props.logo,
         linkVideostation: props.linkVideostation,
       };
-      LocalStorage.set("peliActual", propsGuardados);
-      e.preventDefault();
+      LocalStorage.set("peliActual", propsGuardados); // Guarda las propiedades de la tarjeta actual en LocalStorage
+      e.preventDefault(); // Previene el comportamiento por defecto del evento click
       setTimeout(() => {
-        go();
+        go(); // Redirige a la página correspondiente después de 500ms
       }, 500);
     }
+
     function Compartir() {
       navigator.clipboard
-        .writeText(window.location.host + "/pelicula/" + props.id)
+        .writeText(window.location.host + "/pelicula/" + props.id) // Copia el enlace de la página actual al portapapeles
         .then(() => {
           $q.notify({
             message: "Enlace copiado al portapapeles",
             type: "positive",
             position: "bottom-right",
-          });
+          }); // Muestra una notificación de éxito al usuario
         });
     }
+
     return { linkClick, GuardarLista, Compartir };
   },
 });
