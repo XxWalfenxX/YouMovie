@@ -38,7 +38,7 @@
 
               <!-- Formulario de restablecimiento de contraseña -->
               <q-form ref="form" class="q-gutter-md" @submit="submit">
-                <q-input v-model="user.email" label="Email" name="Email" />
+                <q-input v-model="user.email" label="Email" type="email" name="Email" :rules="[val => !!val || 'Campo obligatorio']"/>
 
                 <div>
                   <!-- Botón para enviar el formulario -->

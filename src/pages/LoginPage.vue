@@ -35,9 +35,10 @@
 
               <!-- Formulario de inicio de sesión -->
               <q-form ref="form" class="q-gutter-md" @submit="submit">
-                <q-input v-model="user.email" label="Email" name="Email" />
+                <q-input v-model="user.email" label="Email" name="Email" type="email" :rules="[val => !!val || 'Campo obligatorio']"/>
 
                 <q-input
+                  :rules="[val => !!val || 'Campo obligatorio']"
                   v-model="user.password"
                   label="Contraseña"
                   name="password"

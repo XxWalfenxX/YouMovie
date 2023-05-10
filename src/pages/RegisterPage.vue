@@ -14,7 +14,9 @@
             >
               <q-img src="~assets/YouMovieLogoWhite.svg"></q-img>
             </div>
-            <div class="text-white q-my-sm text-h5 text-center infinite">YouMovie</div>
+            <div class="text-white q-my-sm text-h5 text-center infinite">
+              YouMovie
+            </div>
           </div>
         </div>
       </div>
@@ -38,12 +40,20 @@
               <!-- Formulario de registro -->
               <q-form ref="form" class="q-gutter-md" @submit="submit">
                 <q-input
+                  :rules="[(val) => !!val || 'Campo obligatorio']"
                   v-model="user.name"
                   label="Nombre de usuario"
                   name="First Name"
                 />
-                <q-input v-model="user.email" label="Email" name="Email" />
                 <q-input
+                  :rules="[(val) => !!val || 'Campo obligatorio']"
+                  v-model="user.email"
+                  label="Email"
+                  name="Email"
+                  type="email"
+                />
+                <q-input
+                  :rules="[(val) => !!val || 'Campo obligatorio']"
                   v-model="user.password"
                   label="Contraseña"
                   name="password"
