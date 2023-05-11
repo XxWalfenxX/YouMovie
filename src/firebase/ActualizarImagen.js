@@ -2,7 +2,7 @@
 import { storage } from "src/firebase/index";
 import { auth } from "./index";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { updateProfile, onAuthStateChanged } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 import { LocalStorage, Notify } from "quasar";
 
 // Función para cambiar la imagen de perfil del usuario
@@ -28,11 +28,7 @@ const cambiarImagenCuenta = (evt, user) => {
             photoURL: imgURL,
           }).then(() => {
             // Actualizar el estado del usuario en LocalStorage
-            onAuthStateChanged(auth, (user) => {
-              if (user) {
-                LocalStorage.set("user", user);
-              }
-            });
+            LocalStorage.set("user", auth.currentUser);
             // Mostrar una notificación de éxito al usuario
             Notify.create({
               type: "positive",

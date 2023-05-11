@@ -144,7 +144,7 @@ export default defineComponent({
 
     // Verificar si el usuario es administrador
     state.admin = AdminAuth(user.email).then((v) => {
-      if (v == true) {
+      if (v == true && linksList.some((link) => link.link === '/admin') == false) {
         linksList.push({
           title: "Administración",
           icon: "build",
