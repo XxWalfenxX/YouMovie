@@ -2,13 +2,14 @@
 import { auth } from "./index";
 import { updateProfile, onAuthStateChanged } from "firebase/auth";
 import { LocalStorage, Notify } from "quasar";
+import { errorMSG } from "./StringsFirebase.js";
 
 // Función para cambiar el nombre de usuario
 const cambiarNombreUsuario = (username) => {
   // Verificar que el nombre de usuario no esté vacío
   if (username != "") {
     // Obtener el objeto auth de Firebase
-  
+
 
     // Actualizar el nombre de usuario en Firebase Authentication
     updateProfile(auth.currentUser, {
@@ -32,7 +33,7 @@ const cambiarNombreUsuario = (username) => {
         Notify.create({
           type: "negative",
           position: "bottom-right",
-          message: error.message,
+          message: errorMSG(error.code),
         });
       });
   }

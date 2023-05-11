@@ -2,6 +2,7 @@
 import { auth } from "./index";
 import { updatePassword } from "firebase/auth";
 import { Notify } from "quasar";
+import { errorMSG } from "./StringsFirebase.js";
 
 // Función para actualizar la contraseña del usuario
 const actualizarPasswd = (newPassword) => {
@@ -23,7 +24,7 @@ const actualizarPasswd = (newPassword) => {
       Notify.create({
         type: "negative",
         position: "bottom-right",
-        message: error.message,
+        message: errorMSG(error.code),
       });
     });
 };
