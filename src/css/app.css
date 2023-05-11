@@ -52,6 +52,6 @@ body.body--dark {
 
 *::-webkit-scrollbar-thumb {
   background-color: #ff913e; /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
+  border-radius: 0; /* roundness of the scroll thumb */
   border: 3px solid #ff913e; /* creates padding around scroll thumb */
 }

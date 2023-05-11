@@ -69,6 +69,9 @@ import { defineComponent, ref } from "vue";
 import AgregarPeli from "src/components/AgregarPeli.vue";
 import EliminarPelicula from "src/components/EliminarPelicula.vue";
 import EditarPeli from "src/components/EditarPeli.vue";
+import AdminAuth from "src/firebase/AdminAuth";
+import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default defineComponent({
   // Establecemos el nombre del componente
@@ -82,6 +85,16 @@ export default defineComponent({
   },
 
   setup() {
+    const $q = useQuasar();
+    const user = $q.localStorage.getItem("user");
+    const router = useRouter();
+
+    AdminAuth(user.email).then((v) => {
+      if (v == false) {
+        router.push("/app");
+      }
+    });
+
     // Definimos una función que verifica si el dispositivo es un móvil
     window.mobileCheck = function () {
       let check = false;

@@ -27,9 +27,6 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import AdminAuth from "src/firebase/AdminAuth";
-import { useRouter } from "vue-router";
-import { useQuasar } from "quasar";
 
 import CollectionMovie from "src/tmdb/tmdb";
 
@@ -37,15 +34,6 @@ export default defineComponent({
   name: "AgregarPeli",
 
   setup() {
-    const $q = useQuasar();
-    const user = $q.localStorage.getItem("user");
-    const router = useRouter();
-    AdminAuth(user.email).then((v) => {
-      if (v == false) {
-        router.push("/app");
-      }
-    });
-
     return {
       tmdb: ref(null),
       synology: ref(null),
