@@ -1,13 +1,12 @@
 // Importar los módulos necesarios de Firebase y Quasar
 import { storage } from "src/firebase/index";
+import { auth } from "./index";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { getAuth, updateProfile, onAuthStateChanged } from "firebase/auth";
+import { updateProfile, onAuthStateChanged } from "firebase/auth";
 import { LocalStorage, Notify } from "quasar";
 
 // Función para cambiar la imagen de perfil del usuario
 const cambiarImagenCuenta = (evt, user) => {
-  // Obtener el objeto auth de Firebase
-  const auth = getAuth();
   // Crear un objeto FormData a partir del evento que ha provocado la llamada a esta función
   const formData = new FormData(evt.target);
   // Crear una referencia a la imagen que se va a subir, que se almacenará en "/user-img/[email del usuario]"

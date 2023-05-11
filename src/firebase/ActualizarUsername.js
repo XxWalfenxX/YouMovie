@@ -1,5 +1,6 @@
 // Importar los módulos necesarios de Firebase y Quasar
-import { getAuth, updateProfile, onAuthStateChanged } from "firebase/auth";
+import { auth } from "./index";
+import { updateProfile, onAuthStateChanged } from "firebase/auth";
 import { LocalStorage, Notify } from "quasar";
 
 // Función para cambiar el nombre de usuario
@@ -7,7 +8,7 @@ const cambiarNombreUsuario = (username) => {
   // Verificar que el nombre de usuario no esté vacío
   if (username != "") {
     // Obtener el objeto auth de Firebase
-    const auth = getAuth();
+  
 
     // Actualizar el nombre de usuario en Firebase Authentication
     updateProfile(auth.currentUser, {

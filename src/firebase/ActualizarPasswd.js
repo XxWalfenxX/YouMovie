@@ -1,11 +1,11 @@
 // Importar los módulos necesarios de Firebase y Quasar
-import { getAuth, updatePassword } from "firebase/auth";
+import { auth } from "./index";
+import { updatePassword } from "firebase/auth";
 import { Notify } from "quasar";
 
 // Función para actualizar la contraseña del usuario
 const actualizarPasswd = (newPassword) => {
   // Obtener el objeto auth de Firebase y el usuario actual
-  const auth = getAuth();
   const user = auth.currentUser;
 
   // Actualizar la contraseña del usuario actual en Firebase Authentication
