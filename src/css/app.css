@@ -55,3 +55,9 @@ body.body--dark {
   border-radius: 0; /* roundness of the scroll thumb */
   border: 3px solid #ff913e; /* creates padding around scroll thumb */
 }
+
+/* Efecto hover en el thumb */
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #d86422; /* tonalidad más oscura */
+  border: 3px solid #d86422;
+}
