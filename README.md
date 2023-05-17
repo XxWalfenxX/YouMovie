@@ -16,6 +16,14 @@ cp .env.dist .env
 ```
 Edita el archivo .env y agrega las claves:
 - [TMDB](https://www.themoviedb.org/settings/api)
+- Firebase
+
+### Inicializa los siguientes módulos en tu proyecto de Firebase
+- Firebase Auth
+- Firebase Storage
+- Firestore Database
+- Analytics
+
 ### Inicie la aplicación en modo de desarrollo (recarga de código activo, informe de errores, etc.)
 
 ```bash
